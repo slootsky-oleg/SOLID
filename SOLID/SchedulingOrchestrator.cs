@@ -1,58 +1,65 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SOLID.Optimizations;
 using SOLID.SchedulingEngine;
+using SOLID.SchedulingRequests;
 using SOLID.SchedulingRules;
 
 namespace SOLID
 {
     public class SchedulingOrchestrator
     {
-	    private readonly IOptimizationRepository optimizationRepository;
+	    private readonly ISchedulingRequestRepository schedulingRequestRepository;
 	    private readonly ISchedulingRulesRepository schedulingRulesRepository;
-	    private readonly ISchedulingResponseRepository schedulingResponseRepository;
-	    private readonly ISchedulingRequestBuilder requestBuilder;
+	    private readonly ISchedulingQueryBuilder queryBuilder;
 	    private readonly ISchedulingEngine schedulingEngine;
 
-	    public void Schedule(long optimizationId)
+	    public SchedulingOrchestrator(ISchedulingRequestRepository schedulingRequestRepository,
+		    ISchedulingRulesRepository schedulingRulesRepository,
+		    ISchedulingQueryBuilder queryBuilder,
+		    ISchedulingEngine schedulingEngine)
 	    {
-		    var optimization = optimizationRepository.GetById(optimizationId)
-		                  ?? throw new OptimizationNotFoundException(optimizationId);
+		    this.schedulingRequestRepository = schedulingRequestRepository;
+		    this.schedulingRulesRepository = schedulingRulesRepository;
+		    this.queryBuilder = queryBuilder;
+		    this.schedulingEngine = schedulingEngine;
+	    }
 
-		    if (optimization.Orders?.Any() != true)
+	    public void Schedule(long requestId)
+	    {
+		    var request = schedulingRequestRepository.GetById(requestId)
+		                  ?? throw new SchedulingRequestNotFoundException(requestId);
+
+		    if (request.Orders?.Any() != true)
 		    {
-			    throw new InvalidOptimizationException(optimizationId, "Request must contain orders.");
+			    throw new InvalidSchedulingRequestException(requestId, "Request must contain orders.");
 		    }
 
-		    if (optimization.End >= DateTime.Now)
+		    if (request.End >= DateTime.Now)
 		    {
-			    throw new InvalidOptimizationException(optimizationId, "Optimization must be active.");
+			    throw new InvalidSchedulingRequestException(requestId, "Optimization must be active.");
 		    }
 
 		    var rules = schedulingRulesRepository.GetAll();
 		    var requiredRules = rules
-			    .Where(r => r.Department == optimization.Department)
+			    .Where(r => r.Department == request.Department)
 			    .ToList();
 
-		    var schedulingRequest = requestBuilder.Build(optimization, requiredRules);
-		    schedulingRequest.Start = optimization.Start;
-		    schedulingRequest.End = optimization.End;
+		    var query = queryBuilder.Build(request, requiredRules, request.Orders);
+		    query.Start = request.Start;
+		    query.End = request.End;
 
 		    try
 		    {
-			    var schedulingResponse = schedulingEngine.Schedule(schedulingRequest);
-			    schedulingResponseRepository.Save(schedulingResponse);
+			    var response = schedulingEngine.Schedule(query);
+			    schedulingRequestRepository.Save(response);
 		    }
 		    catch (Exception e)
 		    {
-			    //try again
+			    //try one more time
 			    try
 			    {
-				    var schedulingResponse = schedulingEngine.Schedule(schedulingRequest);
-				    schedulingResponseRepository.Save(schedulingResponse);
+				    var response = schedulingEngine.Schedule(query);
+				    schedulingRequestRepository.Save(response);
 			    }
 			    catch (Exception exception)
 			    {

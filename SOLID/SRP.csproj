@@ -41,18 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Department.cs" />
-    <Compile Include="ISchedulingResponseRepository.cs" />
+    <Compile Include="SchedulingRequests\Department.cs" />
     <Compile Include="SchedulingEngine\ISchedulingEngine.cs" />
-    <Compile Include="SchedulingEngine\ISchedulingRequestBuilder.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Optimizations\Optimization.cs" />
-    <Compile Include="SchedulingEngine\SchedulingRequest.cs" />
+    <Compile Include="SchedulingEngine\ISchedulingQueryBuilder.cs" />
+    <Compile Include="SchedulingRequests\Order.cs" />
+    <Compile Include="SchedulingRequests\SchedulingRequest.cs" />
+    <Compile Include="SchedulingEngine\SchedulingQuery.cs" />
     <Compile Include="SchedulingEngine\SchedulingResponse.cs" />
     <Compile Include="SchedulingRules\ISchedulingRulesRepository.cs" />
-    <Compile Include="Optimizations\InvalidOptimizationException.cs" />
-    <Compile Include="Optimizations\IOptimizationRepository.cs" />
-    <Compile Include="Optimizations\OptimizationNotFoundException.cs" />
+    <Compile Include="SchedulingRequests\InvalidSchedulingRequestException.cs" />
+    <Compile Include="SchedulingRequests\ISchedulingRequestRepository.cs" />
+    <Compile Include="SchedulingRequests\SchedulingRequestNotFoundException.cs" />
     <Compile Include="SchedulingOrchestrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SchedulingRules\SchedulingRule.cs" />

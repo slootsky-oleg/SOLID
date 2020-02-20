@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SOLID.Optimizations
+namespace SOLID.SchedulingRequests
 {
-	public class Optimization
+	public class SchedulingRequest
 	{
 		public IList<Order> Orders { get; set; }
 		public Department Department { get; set; }

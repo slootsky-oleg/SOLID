@@ -1,6 +1,8 @@
-﻿namespace SOLID.SchedulingRules
+﻿using SOLID.SchedulingRequests;
+
+namespace SOLID.SchedulingRules
 {
-	internal class SchedulingRule
+	public class SchedulingRule
 	{
 		public Department Department;
 	}

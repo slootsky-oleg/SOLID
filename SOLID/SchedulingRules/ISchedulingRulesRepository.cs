@@ -2,7 +2,7 @@
 
 namespace SOLID.SchedulingRules
 {
-	internal interface ISchedulingRulesRepository
+	public interface ISchedulingRulesRepository
 	{
 		IList<SchedulingRule> GetAll();
 	}

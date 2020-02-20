@@ -1,7 +1,7 @@
 ﻿namespace SOLID.SchedulingEngine
 {
-	internal interface ISchedulingEngine
+	public interface ISchedulingEngine
 	{
-		SchedulingResponse Schedule(SchedulingRequest schedulingRequest);
+		SchedulingResponse Schedule(SchedulingQuery schedulingQuery);
 	}
 }
