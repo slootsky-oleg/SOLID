@@ -12,6 +12,9 @@ namespace SOLID.SchedulingEngine
 			IList<Order> orders)
 		{
 			//some building logic here
+			//....
+			//
+
 			return new SchedulingQuery(request, rules, orders);
 		}
 	}

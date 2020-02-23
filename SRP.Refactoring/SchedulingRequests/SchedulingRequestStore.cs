@@ -22,7 +22,7 @@ namespace SRP.Refactoring.SchedulingRequests
 				throw new InvalidSchedulingRequestException(requestId, "Request must contain orders.");
 			}
 
-			if (request.End >= DateTime.Now)
+			if (request.End < DateTime.Now)
 			{
 				throw new InvalidSchedulingRequestException(requestId, "Optimization must be active.");
 			}
