@@ -1,0 +1,11 @@
+﻿Rename "SchedulingOrchestrator" to Scheduler
+Extract code into methods: GetSchedulingRequest, GetSchedulingRules, BuildSchedulingQuery
+Extract trycatch into ScheduleAndSave method
+-- 5 minutes
+
+
+Extract GetSchedulingRequest to SchedulingRequestStore
+Extract GetSchedulingRules to SchedulingRulesStore
+-- 5 minutes
+
+Extract BuildSchedulingQuery to SchedulingQueryBuilder

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{857C2EFB-2A81-47FE-A99C-56A5DF6B3B77}</ProjectGuid>
+    <ProjectGuid>{A209B9DA-739A-4BC6-819E-DB5BDB6FF5D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SOLID</RootNamespace>
-    <AssemblyName>SOLID</AssemblyName>
+    <RootNamespace>SRP.Refactoring</RootNamespace>
+    <AssemblyName>SRP.Refactoring</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,21 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SchedulingRequests\Department.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduler.cs" />
     <Compile Include="SchedulingEngine\ISchedulingEngine.cs" />
-    <Compile Include="SchedulingEngine\SchedulingQueryBuilder.cs" />
-    <Compile Include="SchedulingRequests\Order.cs" />
-    <Compile Include="SchedulingRequests\SchedulingRequest.cs" />
     <Compile Include="SchedulingEngine\SchedulingQuery.cs" />
+    <Compile Include="SchedulingEngine\SchedulingQueryBuilder.cs" />
     <Compile Include="SchedulingEngine\SchedulingResponse.cs" />
-    <Compile Include="SchedulingRequests\SchedulingRequestStore.cs" />
-    <Compile Include="SchedulingRules\ISchedulingRulesRepository.cs" />
+    <Compile Include="SchedulingRequestStore.cs" />
+    <Compile Include="SchedulingRequests\Department.cs" />
     <Compile Include="SchedulingRequests\InvalidSchedulingRequestException.cs" />
     <Compile Include="SchedulingRequests\ISchedulingRequestRepository.cs" />
+    <Compile Include="SchedulingRequests\Order.cs" />
+    <Compile Include="SchedulingRequests\SchedulingRequest.cs" />
     <Compile Include="SchedulingRequests\SchedulingRequestNotFoundException.cs" />
-    <Compile Include="SchedulingOrchestrator.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchedulingRules\SchedulingRulesStore.cs" />
+    <Compile Include="SchedulingRules\ISchedulingRulesRepository.cs" />
     <Compile Include="SchedulingRules\SchedulingRule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RefactoringOrder.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

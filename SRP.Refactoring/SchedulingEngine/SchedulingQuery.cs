@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using SOLID.SchedulingRequests;
-using SOLID.SchedulingRules;
+using SRP.Refactoring.SchedulingRequests;
+using SRP.Refactoring.SchedulingRules;
 
-namespace SOLID.SchedulingEngine
+namespace SRP.Refactoring.SchedulingEngine
 {
 	public class SchedulingQuery
 	{
 		public SchedulingRequest SchedulingRequest { get; }
 		public IList<SchedulingRule> RequiredRules { get; }
 		public IList<Order> RequestOrders { get; }
-		public DateTime Start { get; set; }
-		public DateTime End { get; set; }
-
 
 		public SchedulingQuery(SchedulingRequest schedulingRequest, IList<SchedulingRule> requiredRules, IList<Order> requestOrders)
 		{
@@ -20,5 +17,8 @@ namespace SOLID.SchedulingEngine
 			RequiredRules = requiredRules;
 			RequestOrders = requestOrders;
 		}
+
+		public DateTime Start { get; set; }
+		public DateTime End { get; set; }
 	}
 }
