@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
-using SRP.Refactoring.SchedulingRequests;
 
-namespace SRP.Refactoring
+namespace SRP.Refactoring.SchedulingRequests
 {
 	public class SchedulingRequestStore
 	{

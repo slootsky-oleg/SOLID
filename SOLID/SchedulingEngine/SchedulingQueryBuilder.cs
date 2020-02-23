@@ -7,12 +7,12 @@ namespace SOLID.SchedulingEngine
 	public class SchedulingQueryBuilder
 	{
 		public SchedulingQuery Build(
-			SchedulingRequest schedulingRequest,
-			List<SchedulingRule> requiredRules,
-			IList<Order> requestOrders)
+			SchedulingRequest request,
+			List<SchedulingRule> rules,
+			IList<Order> orders)
 		{
 			//some building logic here
-			return new SchedulingQuery(schedulingRequest, requiredRules, requestOrders);
+			return new SchedulingQuery(request, rules, orders);
 		}
 	}
 }

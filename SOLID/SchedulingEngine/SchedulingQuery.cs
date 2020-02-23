@@ -7,18 +7,18 @@ namespace SOLID.SchedulingEngine
 {
 	public class SchedulingQuery
 	{
-		public SchedulingRequest SchedulingRequest { get; }
-		public IList<SchedulingRule> RequiredRules { get; }
-		public IList<Order> RequestOrders { get; }
+		public SchedulingRequest Request { get; }
+		public IList<SchedulingRule> Rules { get; }
+		public IList<Order> Orders { get; }
 		public DateTime Start { get; set; }
 		public DateTime End { get; set; }
 
 
-		public SchedulingQuery(SchedulingRequest schedulingRequest, IList<SchedulingRule> requiredRules, IList<Order> requestOrders)
+		public SchedulingQuery(SchedulingRequest request, IList<SchedulingRule> rules, IList<Order> orders)
 		{
-			SchedulingRequest = schedulingRequest;
-			RequiredRules = requiredRules;
-			RequestOrders = requestOrders;
+			Request = request;
+			Rules = rules;
+			Orders = orders;
 		}
 	}
 }

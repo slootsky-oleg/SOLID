@@ -1,5 +1,5 @@
-﻿using System;
-using SRP.Refactoring.SchedulingEngine;
+﻿using SRP.Refactoring.SchedulingEngine;
+using SRP.Refactoring.SchedulingRequests;
 using SRP.Refactoring.SchedulingRules;
 
 namespace SRP.Refactoring
@@ -7,49 +7,33 @@ namespace SRP.Refactoring
 	public class Scheduler
 	{
 		private readonly SchedulingQueryBuilder queryBuilder;
-		private readonly ISchedulingEngine schedulingEngine;
-		private readonly SchedulingRequestStore schedulingRequestStore;
-		private readonly SchedulingRulesStore schedulingRulesStore;
+		private readonly SchedulingExecutor schedulingExecutor;
+		private readonly SchedulingRequestStore requestStore;
+		private readonly SchedulingRulesStore rulesStore;
+		private readonly SchedulingResponseSaver responseSaver;
 
 		public Scheduler(SchedulingRequestStore requestStore,
-			SchedulingRulesStore schedulingRulesStore,
+			SchedulingRulesStore rulesStore,
 			SchedulingQueryBuilder queryBuilder,
-			ISchedulingEngine schedulingEngine)
+			SchedulingExecutor schedulingExecutor,
+			SchedulingResponseSaver responseSaver)
 		{
-			schedulingRequestStore = requestStore;
+			this.requestStore = requestStore;
 			this.queryBuilder = queryBuilder;
-			this.schedulingEngine = schedulingEngine;
-			this.schedulingRulesStore = schedulingRulesStore;
+			this.schedulingExecutor = schedulingExecutor;
+			this.rulesStore = rulesStore;
+			this.responseSaver = responseSaver;
 		}
 
 		public void Schedule(long requestId)
 		{
-			var request = schedulingRequestStore.GetById(requestId);
-			var requiredRules = schedulingRulesStore.Get(request);
-			var query = queryBuilder.Build(request, requiredRules, request.Orders);
+			var request = requestStore.GetById(requestId);
+			var requiredRules = rulesStore.Get(request);
 
-			ScheduleAndSave(query);
-		}
+			var query = queryBuilder.Build(request, requiredRules);
 
-		private void ScheduleAndSave(SchedulingQuery query)
-		{
-			try
-			{
-				var response = schedulingEngine.Schedule(query);
-				schedulingRequestRepository.Save(response);
-			}
-			catch (Exception e)
-			{
-				//try one more time
-				try
-				{
-					var response = schedulingEngine.Schedule(query);
-					schedulingRequestRepository.Save(response);
-				}
-				catch (Exception exception)
-				{
-				}
-			}
+			var response = schedulingExecutor.Schedule(query);
+			responseSaver.SaveResponse(response);
 		}
 	}
 }

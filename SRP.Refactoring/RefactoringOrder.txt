@@ -8,4 +8,9 @@ Extract GetSchedulingRequest to SchedulingRequestStore
 Extract GetSchedulingRules to SchedulingRulesStore
 -- 5 minutes
 
-Extract BuildSchedulingQuery to SchedulingQueryBuilder
+Extract BuildSchedulingQuery to SchedulingQueryBuilder - 5 min
+
+Find retry library (Polly https://stackoverflow.com/a/16382831) - 10 min
+Split ScheduleAndSave into SchedulingExecutor and SchedulingResponseSaver - 30min
+
+Change query builder signature - receive orders from request - 5m

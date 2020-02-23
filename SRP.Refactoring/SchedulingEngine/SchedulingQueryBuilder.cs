@@ -6,18 +6,14 @@ namespace SRP.Refactoring.SchedulingEngine
 {
 	public class SchedulingQueryBuilder
 	{
-		public SchedulingQuery Build(
-			SchedulingRequest schedulingRequest,
-			List<SchedulingRule> requiredRules,
-			IList<Order> requestOrders)
+		public SchedulingQuery Build(SchedulingRequest request, IList<SchedulingRule> rules)
 		{
 			//some building logic
-			//TODO: pass all with constructor
-			var query = new SchedulingQuery(schedulingRequest, requiredRules, requestOrders);
-			query.Start = schedulingRequest.Start;
-			query.End = schedulingRequest.End;
-
-			return query;
+			return new SchedulingQuery(request, rules, request.Orders)
+			{
+				Start = request.Start,
+				End = request.End
+			};
 		}
 	}
 }

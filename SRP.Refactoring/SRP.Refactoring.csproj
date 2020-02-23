@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Polly, Version=7.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly.7.2.0\lib\net472\Polly.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,19 +50,24 @@
     <Compile Include="SchedulingEngine\SchedulingQuery.cs" />
     <Compile Include="SchedulingEngine\SchedulingQueryBuilder.cs" />
     <Compile Include="SchedulingEngine\SchedulingResponse.cs" />
-    <Compile Include="SchedulingRequestStore.cs" />
+    <Compile Include="SchedulingEngine\SchedulingExecutor.cs" />
+    <Compile Include="SchedulingRequests\SchedulingRequestStore.cs" />
     <Compile Include="SchedulingRequests\Department.cs" />
     <Compile Include="SchedulingRequests\InvalidSchedulingRequestException.cs" />
     <Compile Include="SchedulingRequests\ISchedulingRequestRepository.cs" />
     <Compile Include="SchedulingRequests\Order.cs" />
     <Compile Include="SchedulingRequests\SchedulingRequest.cs" />
     <Compile Include="SchedulingRequests\SchedulingRequestNotFoundException.cs" />
+    <Compile Include="SchedulingEngine\SchedulingResponseSaver.cs" />
     <Compile Include="SchedulingRules\SchedulingRulesStore.cs" />
     <Compile Include="SchedulingRules\ISchedulingRulesRepository.cs" />
     <Compile Include="SchedulingRules\SchedulingRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RefactoringOrder.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
