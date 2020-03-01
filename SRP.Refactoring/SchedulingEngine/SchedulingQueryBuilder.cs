@@ -9,7 +9,7 @@ namespace SRP.Refactoring.SchedulingEngine
 		public SchedulingQuery Build(SchedulingRequest request, IList<SchedulingRule> rules)
 		{
 			//some building logic
-			return new SchedulingQuery(request, rules, request.Orders)
+			return new SchedulingQuery(request, rules)
 			{
 				Start = request.Start,
 				End = request.End

@@ -51,6 +51,7 @@
     <Compile Include="SchedulingEngine\SchedulingQueryBuilder.cs" />
     <Compile Include="SchedulingEngine\SchedulingResponse.cs" />
     <Compile Include="SchedulingEngine\SchedulingExecutor.cs" />
+    <Compile Include="SchedulingRequests\ISchedulingResponseRepository.cs" />
     <Compile Include="SchedulingRequests\SchedulingRequestStore.cs" />
     <Compile Include="SchedulingRequests\Department.cs" />
     <Compile Include="SchedulingRequests\InvalidSchedulingRequestException.cs" />

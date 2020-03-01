@@ -13,13 +13,11 @@ namespace SRP.Refactoring.SchedulingRules
 			this.rulesRepository = rulesRepository;
 		}
 
-		public List<SchedulingRule> Get(SchedulingRequest request)
+		public IList<SchedulingRule> Get(SchedulingRequest request)
 		{
-			var rules = rulesRepository.GetAll();
+			return rulesRepository.Get(request.Department);
 
-			return rules
-				.Where(r => r.Department == request.Department)
-				.ToList();
+			//Additional logic can be placed here
 		}
 	}
 }

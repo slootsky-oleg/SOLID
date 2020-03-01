@@ -13,11 +13,11 @@ namespace SRP.Refactoring.SchedulingEngine
 		public DateTime Start { get; set; }
 		public DateTime End { get; set; }
 
-		public SchedulingQuery(SchedulingRequest request, IList<SchedulingRule> rules, IList<Order> orders)
+		public SchedulingQuery(SchedulingRequest request, IList<SchedulingRule> rules)
 		{
 			Request = request;
 			Rules = rules;
-			Orders = orders;
+			Orders = request.Orders;
 		}
 	}
 }

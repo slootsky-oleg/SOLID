@@ -10,11 +10,11 @@ namespace SRP.Refactoring.SchedulingEngine
 		private const int RetryCount = 3;
 		private const int SleepSeconds = 5;
 
-		private readonly ISchedulingRequestRepository schedulingRequestRepository;
+		private readonly ISchedulingResponseRepository responseRepository;
 
-		public SchedulingResponseSaver(ISchedulingRequestRepository schedulingRequestRepository)
+		public SchedulingResponseSaver(ISchedulingResponseRepository responseRepository)
 		{
-			this.schedulingRequestRepository = schedulingRequestRepository;
+			this.responseRepository = responseRepository;
 		}
 
 		public void SaveResponse(SchedulingResponse response)
@@ -22,7 +22,7 @@ namespace SRP.Refactoring.SchedulingEngine
 			Policy
 				.Handle<SqlException>(IsDeadLock)
 				.WaitAndRetry(RetryCount, SleepDurationProvider())
-				.Execute(() => schedulingRequestRepository.Save(response));
+				.Execute(() => responseRepository.Save(response));
 		}
 
 		private static bool IsDeadLock(SqlException ex)
