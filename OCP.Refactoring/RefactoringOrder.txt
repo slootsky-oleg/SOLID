@@ -1,4 +1,4 @@
-﻿Find abstractions:
+﻿Spot abstractions:
 	Subjects:
 		ISubject: 
 			Grade() : double
