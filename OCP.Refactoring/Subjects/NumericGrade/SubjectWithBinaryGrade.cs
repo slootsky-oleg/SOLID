@@ -1,30 +1,30 @@
 ﻿using System;
 
-namespace OCP.Refactoring
+namespace OCP.Refactoring.Subjects.NumericGrade
 {
 	public class SubjectWithBinaryGrade : ISubject
 	{
 		public string Name { get; }
-		public bool Grade { get; private set; }
+		private bool grade;
 
 		public SubjectWithBinaryGrade(string name)
 		{
 			this.Name = name;
 		}
 
-		public double NormalizedGrade()
+		public double Grade()
 		{
-			return Convert.ToDouble(Grade);
+			return Convert.ToDouble(grade);
 		}
 
 		public bool IsPassed()
 		{
-			return Grade;
+			return grade;
 		}
 
-		public void Complete(bool grade)
+		public void Complete(bool completeGrade)
 		{
-			Grade = grade;
+			grade = completeGrade;
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OCP.Refactoring
+namespace OCP.Refactoring.Subjects.NumericGrade
 {
 	public class GradeScale
 	{
