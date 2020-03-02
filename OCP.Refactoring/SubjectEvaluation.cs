@@ -1,4 +1,6 @@
-﻿namespace OCP.Refactoring
+﻿using OCP.Refactoring.Subjects;
+
+namespace OCP.Refactoring
 {
 	public class SubjectEvaluation
 	{
@@ -10,7 +12,7 @@
 		{
 			this.Weight = weight;
 			this.IsOptional = isOptional;
-			Subject = subject;
+			this.Subject = subject;
 		}
 
 		public static SubjectEvaluation Mandatory(ISubject subject, double weight)
@@ -23,9 +25,9 @@
 			return new SubjectEvaluation(subject, weight, true);
 		}
 
-		public double GetGrade()
+		public double Grade()
 		{
-			return Subject.NormalizedGrade() * Weight;
+			return Subject.Grade() * Weight;
 		}
 
 		public bool IsPassed()

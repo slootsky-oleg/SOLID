@@ -1,40 +1,38 @@
 ﻿using System.Collections.Generic;
-using OCP.Refactoring;
+using OCP.Refactoring.Subjects.BinaryGrade;
+using OCP.Refactoring.Subjects.NumericGrade;
 
-namespace OCP
+namespace OCP.Refactoring
 {
 	public class Demo
 	{
 		public void Execute()
 		{
-			var gradeScale100Passed60 = new GradeScale(0, 100, 60);
-			var gradeScale10Passed5 = new GradeScale(0, 10, 5);
+			var gradeScale100Passed60 = new NamericScale(100, 60);
+			var gradeScale10Passed5 = new NamericScale(10, 5);
 
 			var adding = new SubjectWithNumericGrade("Adding", gradeScale100Passed60);
-			adding.Complete(80);
-
 			var subtracting = new SubjectWithBinaryGrade("Subtracting");
-			subtracting.Complete(true);
-
 			var multiplying = new SubjectWithNumericGrade("Multiplying", gradeScale10Passed5);
-			multiplying.Complete(6);
-
 			var fractions = new SubjectWithBinaryGrade("Fractions");
-			fractions.Complete(false);
-
 			var dividing = new SubjectWithNumericGrade("Dividing", gradeScale100Passed60);
-			dividing.Complete(70);
 
 			var mathSubjects = new List<SubjectEvaluation>
 			{
-				SubjectEvaluation.Mandatory(adding, 0.3),
-				SubjectEvaluation.Mandatory(subtracting, 0.2),
-				SubjectEvaluation.Mandatory(multiplying, 0.2),
-				SubjectEvaluation.Optional(fractions, 0.1),
-				SubjectEvaluation.Mandatory(dividing, 0.1),
+				SubjectEvaluation.Mandatory(adding, 0.9),
+				SubjectEvaluation.Mandatory(subtracting, 1),
+				SubjectEvaluation.Mandatory(multiplying, 1.5),
+				SubjectEvaluation.Mandatory(dividing, 1.5),
+				SubjectEvaluation.Optional(fractions, 1.8),
 			};
+			var mathCourse = new Course("Math", 5.5, mathSubjects);
 
-			var mathCourse = new Course("Math", 10, mathSubjects);
+			adding.Complete(80);
+			subtracting.Complete(true);
+			multiplying.Complete(6);
+			dividing.Complete(70);
+			fractions.Complete(false);
+
 			var mathGrade = mathCourse.TotalGrade();
 			var isPassed = mathCourse.IsPassed();
 		}

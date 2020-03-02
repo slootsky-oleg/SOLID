@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OCP.Refactoring.Subjects.NumericGrade
+namespace OCP.Refactoring.Subjects.BinaryGrade
 {
 	public class SubjectWithBinaryGrade : ISubject
 	{

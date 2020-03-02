@@ -23,16 +23,14 @@ namespace OCP
 				switch (subject.GradeType)
 				{
 					case GradeType.Binary:
-						var binaryGrade = subject.BinaryGrade;
-						grade += binaryGrade ? subject.Weight : 0;
+						var binaryGrade = Convert.ToDouble(subject.BinaryGrade);
+						grade += binaryGrade * subject.Weight;
 						break;
 					case GradeType.Numeric:
-						var numericGrade = subject.NumericGrade;
-						var normalizedGrade = numericGrade / (subject.HighestGrade - subject.LowestGrade);
+						var normalizedGrade = subject.NumericGrade / (subject.HighestGrade - subject.LowestGrade);
 						grade += normalizedGrade * subject.Weight;
 						break;
 					default:
-						//TODO: throw specific exception, keep grade type
 						throw new Exception("Not supported grade type");
 				}
 			}
@@ -49,13 +47,12 @@ namespace OCP
 					case GradeType.Binary:
 						var isPassed = subject.BinaryGrade;
 
-						//TODO: isOptional -> isMandatory()
 						if (!isPassed && !subject.IsOptional)
 							return false;
 						break;
 					case GradeType.Numeric:
-						var numericGrade = subject.NumericGrade;
-						if (numericGrade < subject.PassingGrade && !subject.IsOptional)
+						var numericPassed = subject.NumericGrade >= subject.PassingGrade;
+						if (!numericPassed && !subject.IsOptional)
 							return false;
 						break;
 					default:

@@ -1,16 +1,15 @@
 ﻿using System;
-using OCP.Refactoring.Subjects.NumericGrade;
 
-namespace OCP.Refactoring.Subjects.BinaryGrade
+namespace OCP.Refactoring.Subjects.NumericGrade
 {
 	public class SubjectWithNumericGrade : ISubject
 	{
-		private readonly GradeScale scale;
+		private readonly NamericScale scale;
 		private double grade;
 
 		public string Name { get; }
 
-		public SubjectWithNumericGrade(string name, GradeScale scale)
+		public SubjectWithNumericGrade(string name, NamericScale scale)
 		{
 			this.Name = name;
 			this.scale = scale;

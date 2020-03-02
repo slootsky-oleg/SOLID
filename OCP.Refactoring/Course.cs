@@ -22,7 +22,7 @@ namespace OCP.Refactoring
 
 		public double TotalGrade()
 		{
-			return Evaluations.Sum(e => e.GetGrade());
+			return Evaluations.Sum(e => e.Grade());
 		}
 
 		public bool IsPassed()

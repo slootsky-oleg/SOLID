@@ -43,12 +43,13 @@
   <ItemGroup>
     <Compile Include="Course.cs" />
     <Compile Include="Demo.cs" />
-    <Compile Include="GradeScale.cs" />
-    <Compile Include="ISubject.cs" />
+    <Compile Include="Subjects\NumericGrade\NamericScale.cs" />
+    <Compile Include="Subjects\ISubject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubjectEvaluation.cs" />
-    <Compile Include="SubjectWithBinaryGrade.cs" />
-    <Compile Include="SubjectWithNumericGrade.cs" />
+    <Compile Include="Subjects\BinaryGrade\SubjectWithBinaryGrade.cs" />
+    <Compile Include="Subjects\NumericGrade\SubjectWithNumericGrade.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

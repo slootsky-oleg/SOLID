@@ -2,7 +2,7 @@
 
 namespace OCP.Refactoring.Subjects.NumericGrade
 {
-	public class GradeScale
+	public class NamericScale
 	{
 		public double Min { get; }
 		public double Max { get; }
@@ -10,7 +10,7 @@ namespace OCP.Refactoring.Subjects.NumericGrade
 
 		public double Range => Max - Min;
 
-		public GradeScale(double min, double max, double passing)
+		public NamericScale(double min, double max, double passing)
 		{
 			ValidateRange(min, max);
 			Min = min;
@@ -20,7 +20,7 @@ namespace OCP.Refactoring.Subjects.NumericGrade
 			Passing = passing;
 		}
 
-		public GradeScale(double max, double passing)
+		public NamericScale(double max, double passing)
 			: this(0, max, passing)
 		{
 		}
