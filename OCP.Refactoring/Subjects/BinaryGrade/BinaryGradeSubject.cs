@@ -2,14 +2,14 @@
 
 namespace OCP.Refactoring.Subjects.BinaryGrade
 {
-	public class SubjectWithBinaryGrade : ISubject
+	public class BinaryGradeSubject : ISubject
 	{
-		public string Name { get; }
+		public SubjectName Name { get; }
 		private bool grade;
 
-		public SubjectWithBinaryGrade(string name)
+		public BinaryGradeSubject(SubjectName name)
 		{
-			this.Name = name;
+			this.Name = name ?? throw new ArgumentNullException(nameof(name));
 		}
 
 		public double Grade()

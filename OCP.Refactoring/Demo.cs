@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using OCP.Refactoring.Courses;
 using OCP.Refactoring.Subjects.BinaryGrade;
 using OCP.Refactoring.Subjects.NumericGrade;
 
@@ -11,11 +12,11 @@ namespace OCP.Refactoring
 			var gradeScale100Passed60 = new NamericScale(100, 60);
 			var gradeScale10Passed5 = new NamericScale(10, 5);
 
-			var adding = new SubjectWithNumericGrade("Adding", gradeScale100Passed60);
-			var subtracting = new SubjectWithBinaryGrade("Subtracting");
-			var multiplying = new SubjectWithNumericGrade("Multiplying", gradeScale10Passed5);
-			var fractions = new SubjectWithBinaryGrade("Fractions");
-			var dividing = new SubjectWithNumericGrade("Dividing", gradeScale100Passed60);
+			var adding = new NumericGradeSubject("Adding", gradeScale100Passed60);
+			var subtracting = new BinaryGradeSubject("Subtracting");
+			var multiplying = new NumericGradeSubject("Multiplying", gradeScale10Passed5);
+			var fractions = new BinaryGradeSubject("Fractions");
+			var dividing = new NumericGradeSubject("Dividing", gradeScale100Passed60);
 
 			var mathSubjects = new List<SubjectEvaluation>
 			{

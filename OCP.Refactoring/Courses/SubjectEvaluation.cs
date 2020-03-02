@@ -1,6 +1,6 @@
 ﻿using OCP.Refactoring.Subjects;
 
-namespace OCP.Refactoring
+namespace OCP.Refactoring.Courses
 {
 	public class SubjectEvaluation
 	{

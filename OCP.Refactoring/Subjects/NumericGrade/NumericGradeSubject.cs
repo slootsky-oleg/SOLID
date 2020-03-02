@@ -2,17 +2,17 @@
 
 namespace OCP.Refactoring.Subjects.NumericGrade
 {
-	public class SubjectWithNumericGrade : ISubject
+	public class NumericGradeSubject : ISubject
 	{
 		private readonly NamericScale scale;
 		private double grade;
 
-		public string Name { get; }
+		public SubjectName Name { get; }
 
-		public SubjectWithNumericGrade(string name, NamericScale scale)
+		public NumericGradeSubject(SubjectName name, NamericScale scale)
 		{
-			this.Name = name;
-			this.scale = scale;
+			this.Name = name ?? throw new ArgumentNullException(nameof(name));
+			this.scale = scale ?? throw new ArgumentNullException(nameof(scale));
 			this.grade = scale.Min;
 		}
 

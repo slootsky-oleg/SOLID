@@ -1,0 +1,56 @@
+﻿Find abstractions:
+	Subjects:
+		ISubject: 
+			Grade() : double
+			IsPassed() : bool
+
+		Numeric
+			NumericScale
+				Min: double
+				Max: double
+				PassingGrade: double
+
+				IsPassing(grade: double) {grade >= PassingGrade}
+
+			NumericGradeSubject: ISubject
+				- scale: NumericScale
+				Complete(grade: double)
+
+		Binary
+			BinaryGridSubject: ISubject
+				Complete(grade: bool)
+
+		
+	SubjectEvaluation:
+		Subject: ISubject
+		IsOptional: bool
+		Weight: double
+
+		Grade(): double {Subject.Grade * Weight}
+		IsPassed(): bool {IsOptional || Subject.IsPassed()}
+
+	Course:
+		Name: string
+		PassingGrade: double
+		Evaluations: SubjectEvaluation[]
+
+		TotalGrade(): double {SumAllEvaluations()}
+		IsPassed(): bool {AllSubjectsPassed() && PassingGrade >= TotalGrade()}
+
+Implement abstractions
+
+Add validations:
+	Names:
+		CourseName
+		SubjectName
+
+	NamericScale:
+		ValidateScale()
+		ValidatePassingGrade()
+
+	NumericGrade
+		Complete(grade: double)
+			IsValidGrade(grade)
+
+	Course:
+		ValidatePassingGrade()
