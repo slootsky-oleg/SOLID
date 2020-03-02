@@ -6,11 +6,16 @@ namespace OCP.Refactoring.Subjects
 	{
 		public string Name { get; }
 
-		public SubjectName(string name)
+		private SubjectName(string name)
 		{
 			ValidateName(name);
 
 			Name = name;
+		}
+
+		public static SubjectName Of(string name)
+		{
+			return new SubjectName(name);
 		}
 
 		private static void ValidateName(string name)

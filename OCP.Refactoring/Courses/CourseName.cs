@@ -6,11 +6,16 @@ namespace OCP.Refactoring.Courses
 	{
 		public string Name { get; }
 
-		public CourseName(string name)
+		private CourseName(string name)
 		{
 			ValidateName(name);
 
 			Name = name;
+		}
+
+		public static CourseName Of(string name)
+		{
+			return new CourseName(name);
 		}
 
 		private static void ValidateName(string name)
