@@ -2,11 +2,13 @@
 {
     public class Subject
     {
-        public double Grade { get; }
+        public string Name { get; }
 
-        // public Subject(double grade)
-        // {
-        //     Grade = grade;
-        // }
+        public Subject(string name)
+        {
+            Name = name;
+        }
+
+        public double Grade { get; }
     }
 }

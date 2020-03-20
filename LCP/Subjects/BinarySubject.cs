@@ -2,12 +2,15 @@
 {
     public class BinarySubject : Subject
     {
+        public BinarySubject(string name) : base(name)
+        {
+        }
+
         public void SetGrade(bool newGrade)
         {
             IsPassed = newGrade;
         }
 
-        //TODO: is used?
         public bool IsPassed { get; private set; }
     }
 }

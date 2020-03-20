@@ -11,18 +11,18 @@ namespace LCP
         {
             var subjects = new List<Subject>
             {
-                new Subject(),
-                new BinarySubject(),
-                new BinarySubject(),
-                new Subject()
+                new Subject("INTRODUCTORY FLIGHT"),
+                new BinarySubject("EMERGENCY PROCEDURES"),
+                new BinarySubject("TRAFFIC PATTERN REVIEW"),
+                new Subject("SOLO PRACTICAL TEST PREPARATION")
             };
 
             var course = new Course(subjects);
 
-            course.Enroll(new Trainee());
-            course.Enroll(new Trainee());
-            course.Enroll(new Pilot());
-            course.Enroll(new Trainee());
+            course.Enroll(new Trainee("Jon Snow"));
+            course.Enroll(new Trainee("Tom Hanks"));
+            course.Enroll(new Pilot("Mordechai Hod"));
+            course.Enroll(new Trainee("Will Smith"));
 
 
             var subjectGrade = course.GetGrade();
