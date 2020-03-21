@@ -24,9 +24,13 @@ namespace LCP
             course.Enroll(new Pilot("Mordechai Hod"));
             course.Enroll(new Trainee("Will Smith"));
 
+            course.Complete("INTRODUCTORY FLIGHT", "Jon Snow", 80);
+            course.Complete("EMERGENCY PROCEDURES", "Jon Snow", 80);
+            course.Complete("TRAFFIC PATTERN REVIEW", "Jon Snow", 80);
+            course.Complete("SOLO PRACTICAL TEST PREPARATION", "Jon Snow", 80);
+
 
             var subjectGrade = course.GetGrade();
-            var traineeGrade = course.GetScore();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using LCP.Scores;
-
+﻿
 namespace LCP.Trainees
 {
     public class Pilot : Trainee
@@ -7,7 +6,5 @@ namespace LCP.Trainees
         public Pilot(string name) : base(name)
         {
         }
-
-        public new PilotScore Score { get; set; }
     }
 }

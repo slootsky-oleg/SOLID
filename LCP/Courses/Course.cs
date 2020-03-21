@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Schema;
-using LCP.Scores;
 using LCP.Subjects;
 using LCP.Trainees;
 
@@ -10,7 +8,7 @@ namespace LCP.Courses
 {
     public class Course
     {
-        private static readonly double MaximumFactor = 10;
+        private const double MaximumFactor = 10;
 
         private readonly IList<Trainee> registeredTrainees;
         private readonly IList<Subject> subjects;
@@ -28,30 +26,13 @@ namespace LCP.Courses
 
         public void Enroll(Trainee trainee)
         {
-            if (trainee is Pilot pilotTrainee) {
+            if (trainee is Pilot pilotTrainee)
+            {
                 var pilotScore = pilotTrainee.Score;
                 pilotScore.Factor = (Math.Min(pilotScore.Factor, MaximumFactor));
             }
 
             registeredTrainees.Add(trainee);
-        }
-
-        public double GetScore()
-        {
-            double totalScore = 0;
-
-            foreach (var trainee in registeredTrainees)
-            {
-                var score = trainee.Score;
-                if (score is PilotScore pilotScore) {
-                    totalScore += score.Value * pilotScore.Factor;
-                } else
-                {
-                    totalScore += score.Value;
-                }
-            }
-
-            return totalScore;
         }
 
         public double GetGrade()
@@ -60,11 +41,13 @@ namespace LCP.Courses
 
             foreach (var subject in subjects)
             {
-                if (subject is BinarySubject binarySubject) {
-                    grade += binarySubject.IsPassed 
-                        ? 100 
+                if (subject is BinarySubject binarySubject)
+                {
+                    grade += binarySubject.IsPassed
+                        ? 100
                         : 0;
-                } else
+                }
+                else
                 {
                     grade += subject.Grade;
                 }

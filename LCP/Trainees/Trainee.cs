@@ -1,6 +1,4 @@
-﻿using LCP.Scores;
-
-namespace LCP.Trainees
+﻿namespace LCP.Trainees
 {
     public class Trainee
     {
@@ -10,7 +8,5 @@ namespace LCP.Trainees
         {
             Name = name;
         }
-
-        public Score Score => null;
     }
 }
