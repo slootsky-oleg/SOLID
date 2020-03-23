@@ -37,13 +37,32 @@ namespace LCP
             {
                 if (this is DrivingLicensingCourse drivingLicensing && trainee is DrivingTrainee drivingTrainee)
                 {
-                    if (drivingTrainee.Age < drivingLicensing.MinAge)
+                    if (drivingTrainee.Age <= drivingLicensing.MinAge || drivingTrainee.Age >= drivingLicensing.MaxAge)
                     {
-                        throw new InvalidOperationException($"Trainee must be above {drivingLicensing.MinAge} years old.");
+                        throw new InvalidOperationException($"Trainee's age must be above {drivingLicensing.MinAge} and less {drivingLicensing.MaxAge} years old.");
                     }
+
+                    if (!drivingTrainee.Categories.Contains(drivingLicensing.Category))
+                    {
+                        drivingTrainee.Categories.Add(drivingLicensing.Category);
+                    }
+                }
+
+                if (this is ShootingLicensingCourse shootingLicensing && trainee is ShootingTrainee shootingTrainee)
+                {
+                    shootingTrainee.HasLicense = true;
                 }
             }
         }
+    }
+
+    public class ShootingTrainee : Trainee
+    {
+        public bool HasLicense { get; set; }
+    }
+
+    public class ShootingLicensingCourse : Course
+    {
     }
 
     public abstract class Trainee
@@ -54,5 +73,6 @@ namespace LCP
     {
         public int Age { get; set; }
         public int VisionPercent { get; set; }
+        public IList<char> Categories { get; set; }
     }
 }
