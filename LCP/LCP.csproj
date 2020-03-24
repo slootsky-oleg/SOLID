@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Course.cs" />
-    <Compile Include="DrivingLicensingCourse.cs" />
+    <Compile Include="Courses\Course.cs" />
+    <Compile Include="Courses\Driving\DrivingTrainee.cs" />
+    <Compile Include="Courses\Driving\PracticeDrivingCourse.cs" />
+    <Compile Include="Courses\Shooting\PracticeShootingCourse.cs" />
+    <Compile Include="Courses\Shooting\ShootingTrainee.cs" />
+    <Compile Include="Courses\Trainee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
