@@ -2,7 +2,7 @@
 
 namespace LCP.Courses.Driving
 {
-    public class DrivingTrainee : Trainee
+    public class DrivingTrainee : ITrainee
     {
         public int Age { get; set; }
         public int VisionPercent { get; set; }

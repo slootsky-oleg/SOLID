@@ -1,6 +1,6 @@
 ﻿namespace LCP.Courses.Shooting
 {
-    public class ShootingTrainee : Trainee
+    public class ShootingTrainee : ITrainee
     {
         public bool HasLicense { get; set; }
         public int Age { get; set; }

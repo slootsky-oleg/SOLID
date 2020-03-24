@@ -46,7 +46,7 @@
     <Compile Include="Courses\Driving\PracticeDrivingCourse.cs" />
     <Compile Include="Courses\Shooting\PracticeShootingCourse.cs" />
     <Compile Include="Courses\Shooting\ShootingTrainee.cs" />
-    <Compile Include="Courses\Trainee.cs" />
+    <Compile Include="Courses\ITrainee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
