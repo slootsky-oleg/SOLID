@@ -1,4 +1,4 @@
-﻿namespace LCP.Courses.Shooting
+﻿namespace LCP.Refactoring.Courses.Shooting
 {
     public class ShootingTrainee : ITrainee
     {

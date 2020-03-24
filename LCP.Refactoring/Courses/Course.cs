@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using LCP.Courses.Driving;
-using LCP.Courses.Shooting;
+﻿using System.Collections.Generic;
 
-namespace LCP.Courses
+namespace LCP.Refactoring.Courses
 {
     public abstract class Course<T> : ICourse  
         where T: ITrainee

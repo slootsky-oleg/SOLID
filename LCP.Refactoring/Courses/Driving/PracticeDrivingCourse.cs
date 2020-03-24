@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LCP.Courses.Driving
+namespace LCP.Refactoring.Courses.Driving
 {
     internal class PracticeDrivingCourse : Course<DrivingTrainee>
     {

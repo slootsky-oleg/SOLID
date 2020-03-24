@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LCP.Courses.Driving
+namespace LCP.Refactoring.Courses.Driving
 {
     public class DrivingTrainee : ITrainee
     {

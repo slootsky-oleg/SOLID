@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using LCP.Courses.Shooting;
+﻿using System.Collections.Generic;
 
-namespace LCP.Courses.Driving.Extreme
+namespace LCP.Refactoring.Courses.Driving.Extreme
 {
     public class ExtremeDrivingCourse
     {

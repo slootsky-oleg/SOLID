@@ -1,6 +1,6 @@
-﻿using LCP.Courses;
+﻿using LCP.Refactoring.Courses;
 
-namespace LCP
+namespace LCP.Refactoring
 {
     public interface ICourse
     {

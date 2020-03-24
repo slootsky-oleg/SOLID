@@ -2,7 +2,7 @@
 
 namespace LCP.Courses.Driving
 {
-    internal class PracticeDrivingCourse : Course
+    internal class DrivingCourse : Course
     {
         public int MinAge { get; set; }
         public int MaxAge { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace LCP.Courses
+﻿namespace LCP.Refactoring.Courses
 {
     public interface ITrainee
     {

@@ -1,8 +1,7 @@
-﻿using LCP.Refactoring.Courses.Driving;
-using LCP.Refactoring.Courses.Driving.Extreme;
-using LCP.Refactoring.Courses.Shooting;
+﻿using LCP.Courses.Driving;
+using LCP.Courses.Shooting;
 
-namespace LCP.Refactoring
+namespace LCP
 {
     public class Demo
     {
@@ -47,7 +46,7 @@ namespace LCP.Refactoring
             var driver1 = new DrivingTrainee();
             var driver2 = new DrivingTrainee();
 
-            var driving = new PracticeDrivingCourse();
+            var driving = new DrivingCourse();
             driving.Enroll(driver1);
             driving.Enroll(driver2);
 

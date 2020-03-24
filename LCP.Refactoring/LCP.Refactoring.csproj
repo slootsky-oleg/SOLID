@@ -7,8 +7,8 @@
     <ProjectGuid>{43F7C25F-55A9-4A30-A628-76F1D1CB7888}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LCP</RootNamespace>
-    <AssemblyName>LCP</AssemblyName>
+    <RootNamespace>LCP.Refactoring</RootNamespace>
+    <AssemblyName>LCP.Refactoring</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

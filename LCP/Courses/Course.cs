@@ -14,9 +14,9 @@ namespace LCP.Courses
             this.trainees = new List<Trainee>();
         }
 
-        public void Enroll(Trainee trainee)
+        public void Enroll(Trainee trainee, string will = null)
         {
-            if (this is PracticeDrivingCourse drivingCourse && trainee is DrivingTrainee drivingTrainee)
+            if (this is DrivingCourse drivingCourse && trainee is DrivingTrainee drivingTrainee)
             {
                 if (drivingTrainee.Age < drivingCourse.MinAge || drivingTrainee.Age > drivingCourse.MaxAge)
                 {
@@ -26,6 +26,11 @@ namespace LCP.Courses
                 if (drivingTrainee.VisionPercent < 75)
                 {
                     throw new InvalidOperationException($"Driver must have a good vision.");
+                }
+
+                if (this is ExtremeDrivingCourse extremeDriving)
+                {
+                    extremeDriving.Will = will;
                 }
             }
 
@@ -50,7 +55,7 @@ namespace LCP.Courses
         {
             foreach (var trainee in trainees)
             {
-                if (this is PracticeDrivingCourse drivingCourse && trainee is DrivingTrainee drivingTrainee)
+                if (this is DrivingCourse drivingCourse && trainee is DrivingTrainee drivingTrainee)
                 {
                     foreach (var category in drivingCourse.Categories)
                     {

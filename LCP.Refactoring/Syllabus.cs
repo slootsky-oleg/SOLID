@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using LCP.Courses;
+using LCP.Refactoring.Courses;
 
-namespace LCP
+namespace LCP.Refactoring
 {
     public class Syllabus
     {
