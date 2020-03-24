@@ -50,12 +50,14 @@ namespace LCP.Courses
         {
             foreach (var trainee in trainees)
             {
-                if (this is PracticeDrivingCourse drivingLicensing && trainee is DrivingTrainee drivingTrainee)
+                if (this is PracticeDrivingCourse drivingCourse && trainee is DrivingTrainee drivingTrainee)
                 {
-
-                    if (!drivingTrainee.Categories.Contains(drivingLicensing.Category))
+                    foreach (var category in drivingCourse.Categories)
                     {
-                        drivingTrainee.Categories.Add(drivingLicensing.Category);
+                        if (!drivingTrainee.Categories.Contains(category))
+                        {
+                            drivingTrainee.Categories.Add(category);
+                        }
                     }
                 }
 

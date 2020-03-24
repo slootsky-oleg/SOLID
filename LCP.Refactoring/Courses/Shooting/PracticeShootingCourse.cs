@@ -18,5 +18,10 @@ namespace LCP.Courses.Shooting
                 throw new InvalidOperationException($"Shooter must complete safety course before.");
             }
         }
+
+        protected override void CompleteCourse(ShootingTrainee trainee)
+        {
+            trainee.HasLicense = true;
+        }
     }
 }

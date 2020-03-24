@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace LCP.Courses.Driving
 {
@@ -6,7 +7,7 @@ namespace LCP.Courses.Driving
     {
         public int MinAge { get; set; }
         public int MaxAge { get; set; }
-        public char Category { get; set; }
+        public IEnumerable<char> Categories { get; set; }
 
         protected override void ValidateTrainee(DrivingTrainee trainee)
         {
@@ -18,6 +19,17 @@ namespace LCP.Courses.Driving
             if (trainee.VisionPercent < 75)
             {
                 throw new InvalidOperationException($"Driver must have a good vision.");
+            }
+        }
+
+        protected override void CompleteCourse(DrivingTrainee trainee)
+        {
+            foreach (var category in Categories)
+            {
+                if (!trainee.Categories.Contains(category))
+                {
+                    trainee.Categories.Add(category);
+                }
             }
         }
     }
