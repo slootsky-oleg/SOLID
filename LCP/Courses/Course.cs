@@ -30,7 +30,7 @@ namespace LCP.Courses
 
                 if (this is ExtremeDrivingCourse extremeDriving)
                 {
-                    extremeDriving.Will = will;
+                    extremeDriving.wills.Add(drivingTrainee, will);
                 }
             }
 

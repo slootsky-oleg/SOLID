@@ -18,10 +18,10 @@ namespace LCP.Refactoring
         private static void RunExtremeDriving()
         {
             var driver1 = new DrivingTrainee();
-            var driver1Will = "my will";
+            var driver1Will = new WIll( "my will");
 
             var driver2 = new DrivingTrainee();
-            var driver2Will = "my will";
+            var driver2Will = new WIll("my will");
 
             var extremeDriving = new ExtremeDrivingCourse();
             extremeDriving.Enroll(driver1, driver1Will);

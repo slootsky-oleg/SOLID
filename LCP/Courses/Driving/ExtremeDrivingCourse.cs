@@ -5,6 +5,11 @@ namespace LCP.Courses.Driving
 {
     internal class ExtremeDrivingCourse : DrivingCourse
     {
-        public string Will { get; set; }
+        public IDictionary<DrivingTrainee, string> wills { get; set; }
+
+        public ExtremeDrivingCourse()
+        {
+            wills = new Dictionary<DrivingTrainee, string>();
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
     public class ExtremeDrivingCourse
     {
         private readonly PracticeDrivingCourse drivingCourse;
-        private Dictionary<DrivingTrainee, string> traineeWills;
+        private readonly Dictionary<DrivingTrainee, WIll> traineeWills;
 
 
         public ExtremeDrivingCourse()
@@ -16,12 +16,11 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
                 MaxAge = 60
             };
 
-            traineeWills = new Dictionary<DrivingTrainee, string>();
-
+            traineeWills = new Dictionary<DrivingTrainee, WIll>();
         }
 
 
-        public void Enroll(DrivingTrainee trainee, string will)
+        public void Enroll(DrivingTrainee trainee, WIll will)
         {
             traineeWills.Add(trainee, will);
             drivingCourse.Enroll(trainee);
@@ -30,6 +29,11 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
         public void Complete()
         {
             drivingCourse.Complete();
+        }
+
+        public WIll GetWIll(DrivingTrainee trainee)
+        {
+            return traineeWills[trainee];
         }
     }
 }

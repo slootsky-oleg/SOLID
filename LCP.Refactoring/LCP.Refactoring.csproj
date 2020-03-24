@@ -44,6 +44,7 @@
     <Compile Include="Courses\Course.cs" />
     <Compile Include="Courses\Driving\DrivingTrainee.cs" />
     <Compile Include="Courses\Driving\Extreme\ExtremeDrivingCourse.cs" />
+    <Compile Include="Courses\Driving\Extreme\WIll.cs" />
     <Compile Include="Courses\Driving\PracticeDrivingCourse.cs" />
     <Compile Include="Courses\Shooting\PracticeShootingCourse.cs" />
     <Compile Include="Courses\Shooting\ShootingTrainee.cs" />
