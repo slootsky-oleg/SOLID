@@ -16,10 +16,10 @@ namespace LCP
 
         private static void RunExtremeDriving()
         {
-            var driver1 = new DrivingTrainee();
+            var driver1 = new DrivingTrainee() { Name = "driver 1" };
             var driver1Will = "my will";
 
-            var driver2 = new DrivingTrainee();
+            var driver2 = new DrivingTrainee() { Name = "driver 2" };
             var driver2Will = "my will";
 
             var extremeDriving = new ExtremeDrivingCourse();
@@ -31,8 +31,8 @@ namespace LCP
 
         private static void RunShooting()
         {
-            var shooter1 = new ShootingTrainee();
-            var shooter2 = new ShootingTrainee();
+            var shooter1 = new ShootingTrainee() { Name = "shooter 1" };
+            var shooter2 = new ShootingTrainee() { Name = "shooter 2" };
 
             var shooting = new PracticeShootingCourse();
             shooting.Enroll(shooter1);
@@ -43,8 +43,8 @@ namespace LCP
 
         private static void RunDriving()
         {
-            var driver1 = new DrivingTrainee();
-            var driver2 = new DrivingTrainee();
+            var driver1 = new DrivingTrainee() { Name = "driver 1" };
+            var driver2 = new DrivingTrainee() { Name = "driver 2" };
 
             var driving = new DrivingCourse();
             driving.Enroll(driver1);
