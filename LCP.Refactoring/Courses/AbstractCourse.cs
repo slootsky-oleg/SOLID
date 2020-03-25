@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 
 namespace LCP.Refactoring.Courses
 {
@@ -8,8 +7,8 @@ namespace LCP.Refactoring.Courses
         where T: ITrainee
     {
         private readonly HashSet<T> trainees;
+       
         public CourseName Name { get; }
-
 
         protected Course(CourseName name)
         {
@@ -31,13 +30,6 @@ namespace LCP.Refactoring.Courses
                 throw new TraineeAlreadyEnrolledException(trainee, this);
             }
         }
-
-        // void ICourse.Enroll(ITrainee trainee)
-        //
-        // {
-        //     Enroll((T) trainee);
-        // }
-
 
         public void Complete()
         {

@@ -85,5 +85,15 @@ namespace LCP.Courses
                 }
             }
         }
+
+        public string GetWill(DrivingTrainee trainee)
+        {
+            if (this is ExtremeDrivingCourse extremeDrivingCourse)
+            {
+                return extremeDrivingCourse.wills[trainee];
+            }
+
+            throw new InvalidOperationException("Will is not supported");
+        }
     }
 }

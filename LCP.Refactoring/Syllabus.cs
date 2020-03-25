@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LCP.Refactoring.Courses;
 using LCP.Refactoring.Courses.Driving;
 using LCP.Refactoring.Courses.Driving.Extreme;
 using LCP.Refactoring.Courses.Shooting;
