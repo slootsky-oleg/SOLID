@@ -9,11 +9,16 @@ namespace LCP.Refactoring.Courses.Driving
 
         private readonly string value;
 
-        public DrivingCategory(string value)
+        private DrivingCategory(string value)
         {
             Validate(value);
 
             this.value = value;
+        }
+
+        public static DrivingCategory From(string value)
+        {
+            return new DrivingCategory(value);
         }
 
         protected bool Equals(DrivingCategory other)

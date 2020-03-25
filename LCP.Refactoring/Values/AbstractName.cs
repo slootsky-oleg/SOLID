@@ -2,11 +2,11 @@
 
 namespace LCP.Refactoring.Values
 {
-    public abstract class Name
+    public abstract class AbstractName
     {
         private readonly string value;
 
-        protected Name(string value)
+        protected AbstractName(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -21,7 +21,7 @@ namespace LCP.Refactoring.Values
             return value;
         }
 
-        protected bool Equals(Name other)
+        protected bool Equals(AbstractName other)
         {
             return value == other.value;
         }
@@ -31,7 +31,7 @@ namespace LCP.Refactoring.Values
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Name) obj);
+            return Equals((AbstractName) obj);
         }
 
         public override int GetHashCode()
@@ -39,12 +39,12 @@ namespace LCP.Refactoring.Values
             return value.GetHashCode();
         }
 
-        public static bool operator ==(Name left, Name right)
+        public static bool operator ==(AbstractName left, AbstractName right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Name left, Name right)
+        public static bool operator !=(AbstractName left, AbstractName right)
         {
             return !Equals(left, right);
         }

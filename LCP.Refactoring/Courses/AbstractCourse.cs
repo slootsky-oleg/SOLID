@@ -7,14 +7,13 @@ namespace LCP.Refactoring.Courses
     public abstract class Course<T> : ICourse  
         where T: ITrainee
     {
-        //readonly
-        private readonly IList<T> trainees;
+        private readonly HashSet<T> trainees;
         public CourseName Name { get; }
 
 
         protected Course(CourseName name)
         {
-            this.trainees = new List<T>();
+            this.trainees = new HashSet<T>();
 
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
@@ -27,7 +26,10 @@ namespace LCP.Refactoring.Courses
         {
             ValidateTrainee(trainee);
 
-            trainees.Add(trainee);
+            if (!trainees.Add(trainee))
+            {
+                throw new TraineeAlreadyEnrolledException(trainee, this);
+            }
         }
 
         // void ICourse.Enroll(ITrainee trainee)

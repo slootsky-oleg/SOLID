@@ -2,7 +2,7 @@
 
 namespace LCP.Refactoring.Courses
 {
-    public class TraineeName : Name
+    public class TraineeName : AbstractName
     {
         private TraineeName(string value) 
             : base(value)

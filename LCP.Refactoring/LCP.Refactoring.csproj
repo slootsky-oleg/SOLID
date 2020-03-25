@@ -44,19 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Courses\Course.cs" />
+    <Compile Include="Courses\AbstractCourse.cs" />
     <Compile Include="Courses\Driving\DrivingCategory.cs" />
+    <Compile Include="Courses\Driving\DrivingCourseTraineeValidator.cs" />
     <Compile Include="Courses\Driving\DrivingTrainee.cs" />
     <Compile Include="Courses\Driving\Extreme\ExtremeDrivingCourse.cs" />
+    <Compile Include="Courses\Driving\Extreme\ExtremeDrivingTrainee.cs" />
     <Compile Include="Courses\Driving\Extreme\WIll.cs" />
     <Compile Include="Courses\Driving\DrivingCourse.cs" />
+    <Compile Include="Courses\Driving\ITrainee.cs" />
     <Compile Include="Courses\Shooting\ShootingCourse.cs" />
     <Compile Include="Courses\Shooting\ShootingTrainee.cs" />
     <Compile Include="Courses\ITrainee.cs" />
     <Compile Include="Courses\CourseName.cs" />
     <Compile Include="Courses\TraineeName.cs" />
+    <Compile Include="Courses\TraineeAlreadyEnrolledException.cs" />
     <Compile Include="Courses\TraineeNotEnrolledException.cs" />
-    <Compile Include="Values\Name.cs" />
+    <Compile Include="Values\AbstractName.cs" />
     <Compile Include="Values\VisualAcuity.cs" />
     <Compile Include="Values\AgeSpan.cs" />
     <Compile Include="Values\Span.cs" />

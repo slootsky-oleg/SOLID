@@ -6,42 +6,55 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
 {
     public class ExtremeDrivingCourse : ICourse
     {
-        private readonly DrivingCourse drivingCourse;
-        private readonly Dictionary<DrivingTrainee, WIll> traineeWills;
+        private readonly HashSet<ExtremeDrivingTrainee> trainees;
+        private readonly Dictionary<ExtremeDrivingTrainee, WIll> traineeWills;
+        private readonly DrivingCourseTraineeValidator traineeValidator;
 
-        public CourseName Name => drivingCourse.Name;
+        public CourseName Name { get; }
 
 
-        public ExtremeDrivingCourse(CourseName name,
-            AgeSpan ageSpan,
-            VisualAcuity visualAcuity,
-            IEnumerable<DrivingCategory> categories) 
+        public ExtremeDrivingCourse(CourseName name, AgeSpan ageSpan, VisualAcuity visualAcuity)
         {
-            traineeWills = new Dictionary<DrivingTrainee, WIll>();
-            drivingCourse = new DrivingCourse(name, ageSpan, visualAcuity, categories);
+            if (ageSpan == null) throw new ArgumentNullException(nameof(ageSpan));
+            if (visualAcuity == null) throw new ArgumentNullException(nameof(visualAcuity));
+
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+
+            this.traineeValidator = new DrivingCourseTraineeValidator(ageSpan, visualAcuity);
+            this.trainees = new HashSet<ExtremeDrivingTrainee>();
+            this.traineeWills = new Dictionary<ExtremeDrivingTrainee, WIll>();
         }
 
-        public void Enroll(DrivingTrainee trainee, WIll will)
+        public void Enroll(ExtremeDrivingTrainee trainee, WIll will)
         {
+            traineeValidator.Validate(trainee);
+
+            if (!trainees.Add(trainee))
+            {
+                throw new TraineeAlreadyEnrolledException(trainee, this);
+            }
+            
             traineeWills.Add(trainee, will);
-            drivingCourse.Enroll(trainee);
         }
 
         public void Complete()
         {
-            drivingCourse.Complete();
+            foreach (var trainee in trainees)
+            {
+                trainee.CompleteExtremeSkills();
+            }
         }
 
-        public WIll GetWIll(DrivingTrainee trainee)
+        public WIll GetWIll(ExtremeDrivingTrainee trainee)
         {
             return traineeWills.TryGetValue(trainee, out var will) 
                 ? will 
-                : throw new InvalidOperationException($"Trainee [{trainee}] is not enrolled in course [{this}]");
+                : throw new TraineeNotEnrolledException(trainee,this);
         }
 
         public override string ToString()
         {
-            return drivingCourse.ToString();
+            return Name.ToString();
         }
     }
 }

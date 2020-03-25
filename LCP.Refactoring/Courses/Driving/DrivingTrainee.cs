@@ -6,7 +6,7 @@ using LCP.Refactoring.Values;
 
 namespace LCP.Refactoring.Courses.Driving
 {
-    public class DrivingTrainee : ITrainee
+    public class DrivingTrainee : IDrivingTrainee
     {
         private readonly HashSet<DrivingCategory> categories;
 
