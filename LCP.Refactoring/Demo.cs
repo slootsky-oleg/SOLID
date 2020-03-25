@@ -35,7 +35,7 @@ namespace LCP.Refactoring
             var shooter1 = new ShootingTrainee();
             var shooter2 = new ShootingTrainee();
 
-            var shooting = new PracticeShootingCourse();
+            var shooting = new ShootingCourse();
             shooting.Enroll(shooter1);
             shooting.Enroll(shooter2);
 
@@ -47,7 +47,7 @@ namespace LCP.Refactoring
             var driver1 = new DrivingTrainee();
             var driver2 = new DrivingTrainee();
 
-            var driving = new PracticeDrivingCourse();
+            var driving = new DrivingCourse();
             driving.Enroll(driver1);
             driving.Enroll(driver2);
 

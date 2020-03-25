@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LCP.Refactoring.Courses.Driving
 {
-    internal class PracticeDrivingCourse : Course<DrivingTrainee>
+    internal class DrivingCourse : Course<DrivingTrainee>
     {
         public int MinAge { get; set; }
         public int MaxAge { get; set; }

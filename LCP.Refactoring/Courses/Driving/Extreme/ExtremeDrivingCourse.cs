@@ -4,13 +4,13 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
 {
     public class ExtremeDrivingCourse
     {
-        private readonly PracticeDrivingCourse drivingCourse;
+        private readonly DrivingCourse drivingCourse;
         private readonly Dictionary<DrivingTrainee, WIll> traineeWills;
 
 
         public ExtremeDrivingCourse()
         {
-            drivingCourse = new PracticeDrivingCourse
+            drivingCourse = new DrivingCourse
             {
                 MinAge = 27,
                 MaxAge = 60

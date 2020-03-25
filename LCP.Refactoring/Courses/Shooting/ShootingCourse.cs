@@ -2,7 +2,7 @@
 
 namespace LCP.Refactoring.Courses.Shooting
 {
-    public class PracticeShootingCourse : Course<ShootingTrainee>
+    public class ShootingCourse : Course<ShootingTrainee>
     {
         public int MinAge { get; set; }
 
