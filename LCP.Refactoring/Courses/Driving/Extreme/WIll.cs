@@ -10,7 +10,7 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
         {
             if (string.IsNullOrWhiteSpace(text))
             {
-                throw new ArgumentException("Text is required.");
+                throw new ArgumentException("Will is required.");
             }
 
             this.text = text;

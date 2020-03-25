@@ -6,6 +6,6 @@ namespace LCP.Courses.Driving
     {
         public int MinAge { get; set; }
         public int MaxAge { get; set; }
-        public IList<char> Categories { get; set; }
+        public IList<string> Categories { get; set; }
     }
 }

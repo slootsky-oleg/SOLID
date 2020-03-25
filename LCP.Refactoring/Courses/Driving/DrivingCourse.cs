@@ -1,35 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using LCP.Refactoring.Values;
 
 namespace LCP.Refactoring.Courses.Driving
 {
     internal class DrivingCourse : Course<DrivingTrainee>
     {
-        public int MinAge { get; set; }
-        public int MaxAge { get; set; }
-        public IEnumerable<char> Categories { get; set; }
+        private readonly AgeSpan ageSpan;
+        private readonly VisualAcuity visualAcuity;
+        private readonly IList<DrivingCategory> categories;
+
+        public DrivingCourse(AgeSpan ageSpan, VisualAcuity visualAcuity, IEnumerable<DrivingCategory> categories)
+        {
+            this.ageSpan = ageSpan ?? throw new ArgumentNullException(nameof(ageSpan));
+            this.visualAcuity = visualAcuity ?? throw new ArgumentNullException(nameof(visualAcuity));
+            this.categories = categories?.ToList() ?? throw new ArgumentNullException(nameof(categories));
+        }
+
 
         protected override void ValidateTrainee(DrivingTrainee trainee)
         {
-            if (trainee.Age < MinAge || trainee.Age > MaxAge)
-            {
-                throw new InvalidOperationException($"Driver must be between the ages of {MinAge} and {MaxAge}.");
-            }
+            ageSpan.Validate(trainee.Age);
 
-            if (trainee.VisionPercent < 75)
+            ValidateVisualAcuity(trainee.VisualAcuity);
+        }
+
+        private void ValidateVisualAcuity(VisualAcuity validatingAcuity)
+        {
+            if (validatingAcuity < visualAcuity)
             {
-                throw new InvalidOperationException($"Driver must have a good vision.");
+                throw new InvalidOperationException($"Driver must have at least [{visualAcuity}] visual acuity.");
             }
         }
 
         protected override void CompleteCourse(DrivingTrainee trainee)
         {
-            foreach (var category in Categories)
+            foreach (var category in categories)
             {
-                if (!trainee.Categories.Contains(category))
-                {
-                    trainee.Categories.Add(category);
-                }
+                trainee.CompleteCategory(category);
             }
         }
     }

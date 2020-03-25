@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LCP.Refactoring.Values;
 
 namespace LCP.Refactoring.Courses.Driving.Extreme
 {
@@ -8,15 +9,10 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
         private readonly Dictionary<DrivingTrainee, WIll> traineeWills;
 
 
-        public ExtremeDrivingCourse()
+        public ExtremeDrivingCourse(AgeSpan ageSpan, VisualAcuity visualAcuity, IEnumerable<DrivingCategory> categories)
         {
-            drivingCourse = new DrivingCourse
-            {
-                MinAge = 27,
-                MaxAge = 60
-            };
-
             traineeWills = new Dictionary<DrivingTrainee, WIll>();
+            drivingCourse = new DrivingCourse(ageSpan, visualAcuity, categories);
         }
 
 

@@ -23,7 +23,7 @@ namespace LCP.Refactoring
             var driver2 = new DrivingTrainee();
             var driver2Will = new WIll("my will");
 
-            var extremeDriving = new ExtremeDrivingCourse();
+            var extremeDriving = new ExtremeDrivingCourse(null);
             extremeDriving.Enroll(driver1, driver1Will);
             extremeDriving.Enroll(driver2, driver2Will);
 

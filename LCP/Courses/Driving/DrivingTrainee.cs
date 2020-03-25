@@ -6,6 +6,6 @@ namespace LCP.Courses.Driving
     {
         public int Age { get; set; }
         public int VisionPercent { get; set; }
-        public IList<char> Categories { get; set; }
+        public IList<string> Categories { get; set; }
     }
 }

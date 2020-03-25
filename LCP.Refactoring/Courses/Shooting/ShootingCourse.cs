@@ -1,10 +1,11 @@
 ﻿using System;
+using LCP.Refactoring.Values;
 
 namespace LCP.Refactoring.Courses.Shooting
 {
     public class ShootingCourse : Course<ShootingTrainee>
     {
-        public int MinAge { get; set; }
+        public Age MinAge { get; set; }
 
         protected override void ValidateTrainee(ShootingTrainee trainee)
         {

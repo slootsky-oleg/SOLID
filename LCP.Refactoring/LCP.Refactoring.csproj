@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Courses\Course.cs" />
+    <Compile Include="Courses\Driving\DrivingCategory.cs" />
     <Compile Include="Courses\Driving\DrivingTrainee.cs" />
     <Compile Include="Courses\Driving\Extreme\ExtremeDrivingCourse.cs" />
     <Compile Include="Courses\Driving\Extreme\WIll.cs" />
@@ -49,10 +50,14 @@
     <Compile Include="Courses\Shooting\ShootingCourse.cs" />
     <Compile Include="Courses\Shooting\ShootingTrainee.cs" />
     <Compile Include="Courses\ITrainee.cs" />
+    <Compile Include="Values\VisualAcuity.cs" />
+    <Compile Include="Values\AgeSpan.cs" />
+    <Compile Include="Values\Span.cs" />
     <Compile Include="Demo.cs" />
     <Compile Include="ICourse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Syllabus.cs" />
+    <Compile Include="Values\Age.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
