@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using LCP.Courses.Driving;
 using LCP.Courses.Shooting;
 
@@ -30,6 +31,11 @@ namespace LCP.Courses
 
                 if (this is ExtremeDrivingCourse extremeDriving)
                 {
+                    if (!drivingTrainee.Categories.Any())
+                    {
+                        throw new InvalidOperationException($"Driver must have driving license.");
+                    }
+
                     extremeDriving.wills.Add(drivingTrainee, will);
                 }
             }
@@ -57,11 +63,18 @@ namespace LCP.Courses
             {
                 if (this is DrivingCourse drivingCourse && trainee is DrivingTrainee drivingTrainee)
                 {
-                    foreach (var category in drivingCourse.Categories)
+                    if (this is ExtremeDrivingCourse extremeDriving)
                     {
-                        if (!drivingTrainee.Categories.Contains(category))
+                        drivingTrainee.IsExtremeDriver = true;
+                    }
+                    else
+                    {
+                        foreach (var category in drivingCourse.Categories)
                         {
-                            drivingTrainee.Categories.Add(category);
+                            if (!drivingTrainee.Categories.Contains(category))
+                            {
+                                drivingTrainee.Categories.Add(category);
+                            }
                         }
                     }
                 }

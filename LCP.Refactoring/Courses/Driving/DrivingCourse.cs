@@ -6,7 +6,7 @@ using LCP.Refactoring.Values;
 
 namespace LCP.Refactoring.Courses.Driving
 {
-    internal class DrivingCourse : Course<DrivingTrainee>
+    public class DrivingCourse : Course<DrivingTrainee>
     {
         private readonly AgeSpan ageSpan;
         private readonly VisualAcuity visualAcuity;
