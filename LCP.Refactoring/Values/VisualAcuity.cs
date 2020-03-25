@@ -6,7 +6,7 @@ namespace LCP.Refactoring.Values
     {
         private int value;
 
-        public VisualAcuity(int value)
+        private VisualAcuity(int value)
         {
             if (value < 0)
             {
@@ -14,6 +14,11 @@ namespace LCP.Refactoring.Values
             }
 
             this.value = value;
+        }
+
+        public static VisualAcuity From(int value)
+        {
+            return new VisualAcuity(value);
         }
 
         public int CompareTo(VisualAcuity other)

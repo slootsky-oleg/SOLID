@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using LCP.Refactoring.Values;
 
 namespace LCP.Refactoring.Courses.Driving
@@ -11,7 +12,11 @@ namespace LCP.Refactoring.Courses.Driving
         private readonly VisualAcuity visualAcuity;
         private readonly IList<DrivingCategory> categories;
 
-        public DrivingCourse(AgeSpan ageSpan, VisualAcuity visualAcuity, IEnumerable<DrivingCategory> categories)
+        public DrivingCourse(CourseName name,
+            AgeSpan ageSpan,
+            VisualAcuity visualAcuity,
+            IEnumerable<DrivingCategory> categories)
+            : base(name)
         {
             this.ageSpan = ageSpan ?? throw new ArgumentNullException(nameof(ageSpan));
             this.visualAcuity = visualAcuity ?? throw new ArgumentNullException(nameof(visualAcuity));
@@ -26,6 +31,7 @@ namespace LCP.Refactoring.Courses.Driving
             ValidateVisualAcuity(trainee.VisualAcuity);
         }
 
+        [AssertionMethod]
         private void ValidateVisualAcuity(VisualAcuity validatingAcuity)
         {
             if (validatingAcuity < visualAcuity)

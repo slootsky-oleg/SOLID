@@ -4,7 +4,8 @@ namespace LCP.Refactoring
 {
     public interface ICourse
     {
-        void Enroll(ITrainee trainee);
-        void Complete();
+        CourseName Name { get; }
+        // void Enroll(ITrainee trainee);
+        // void Complete();
     }
 }

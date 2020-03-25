@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,6 +53,10 @@
     <Compile Include="Courses\Shooting\ShootingCourse.cs" />
     <Compile Include="Courses\Shooting\ShootingTrainee.cs" />
     <Compile Include="Courses\ITrainee.cs" />
+    <Compile Include="Courses\CourseName.cs" />
+    <Compile Include="Courses\TraineeName.cs" />
+    <Compile Include="Courses\TraineeNotEnrolledException.cs" />
+    <Compile Include="Values\Name.cs" />
     <Compile Include="Values\VisualAcuity.cs" />
     <Compile Include="Values\AgeSpan.cs" />
     <Compile Include="Values\Span.cs" />
@@ -59,6 +66,8 @@
     <Compile Include="Syllabus.cs" />
     <Compile Include="Values\Age.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

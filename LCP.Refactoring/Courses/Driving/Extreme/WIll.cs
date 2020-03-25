@@ -6,7 +6,7 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
     {
         private readonly string text;
 
-        public WIll(string text)
+        private WIll(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
             {
@@ -14,6 +14,11 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
             }
 
             this.text = text;
+        }
+
+        public static WIll From(string text)
+        {
+            return new WIll(text);
         }
 
         public override string ToString()

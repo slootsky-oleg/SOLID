@@ -2,6 +2,6 @@
 {
     public interface ITrainee
     {
-        //age, 
+        TraineeName Name { get; }
     }
 }

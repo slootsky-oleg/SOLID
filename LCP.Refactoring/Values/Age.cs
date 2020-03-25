@@ -6,7 +6,7 @@ namespace LCP.Refactoring.Values
     {
         private int value;
 
-        public Age(int value)
+        private Age(int value)
         {
             if (value < 0)
             {
@@ -14,6 +14,11 @@ namespace LCP.Refactoring.Values
             }
 
             this.value = value;
+        }
+
+        public static Age From(int value)
+        {
+            return new Age(value);
         }
 
         public int CompareTo(Age other)

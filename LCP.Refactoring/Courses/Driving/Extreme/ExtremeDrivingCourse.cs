@@ -1,20 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using LCP.Refactoring.Values;
 
 namespace LCP.Refactoring.Courses.Driving.Extreme
 {
-    public class ExtremeDrivingCourse
+    public class ExtremeDrivingCourse : ICourse
     {
         private readonly DrivingCourse drivingCourse;
         private readonly Dictionary<DrivingTrainee, WIll> traineeWills;
 
+        public CourseName Name => drivingCourse.Name;
 
-        public ExtremeDrivingCourse(AgeSpan ageSpan, VisualAcuity visualAcuity, IEnumerable<DrivingCategory> categories)
+
+        public ExtremeDrivingCourse(CourseName name,
+            AgeSpan ageSpan,
+            VisualAcuity visualAcuity,
+            IEnumerable<DrivingCategory> categories) 
         {
             traineeWills = new Dictionary<DrivingTrainee, WIll>();
-            drivingCourse = new DrivingCourse(ageSpan, visualAcuity, categories);
+            drivingCourse = new DrivingCourse(name, ageSpan, visualAcuity, categories);
         }
-
 
         public void Enroll(DrivingTrainee trainee, WIll will)
         {
@@ -29,7 +34,14 @@ namespace LCP.Refactoring.Courses.Driving.Extreme
 
         public WIll GetWIll(DrivingTrainee trainee)
         {
-            return traineeWills[trainee];
+            return traineeWills.TryGetValue(trainee, out var will) 
+                ? will 
+                : throw new InvalidOperationException($"Trainee [{trainee}] is not enrolled in course [{this}]");
+        }
+
+        public override string ToString()
+        {
+            return drivingCourse.ToString();
         }
     }
 }

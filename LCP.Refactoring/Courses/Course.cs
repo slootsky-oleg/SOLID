@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace LCP.Refactoring.Courses
 {
@@ -7,10 +9,14 @@ namespace LCP.Refactoring.Courses
     {
         //readonly
         private readonly IList<T> trainees;
+        public CourseName Name { get; }
 
-        protected Course()
+
+        protected Course(CourseName name)
         {
             this.trainees = new List<T>();
+
+            Name = name ?? throw new ArgumentNullException(nameof(name));
         }
 
         protected abstract void ValidateTrainee(T trainee);
@@ -24,11 +30,11 @@ namespace LCP.Refactoring.Courses
             trainees.Add(trainee);
         }
 
-        void ICourse.Enroll(ITrainee trainee)
-
-        {
-            Enroll((T) trainee);
-        }
+        // void ICourse.Enroll(ITrainee trainee)
+        //
+        // {
+        //     Enroll((T) trainee);
+        // }
 
 
         public void Complete()
@@ -37,6 +43,11 @@ namespace LCP.Refactoring.Courses
             {
                 CompleteCourse(trainee);
             }
+        }
+
+        public override string ToString()
+        {
+            return Name.ToString();
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using LCP.Refactoring.Courses.Driving;
+﻿using LCP.Refactoring.Courses;
+using LCP.Refactoring.Courses.Driving;
 using LCP.Refactoring.Courses.Driving.Extreme;
 using LCP.Refactoring.Courses.Shooting;
+using LCP.Refactoring.Values;
 
 namespace LCP.Refactoring
 {
@@ -17,11 +19,11 @@ namespace LCP.Refactoring
 
         private static void RunExtremeDriving()
         {
-            var driver1 = new DrivingTrainee();
-            var driver1Will = new WIll( "my will");
+            var driver1 = new DrivingTrainee(TraineeName.From("Jon"), Age.From(32), VisualAcuity.From(90));
+            var driver1Will = WIll.From( "my will");
 
-            var driver2 = new DrivingTrainee();
-            var driver2Will = new WIll("my will");
+            var driver2 = new DrivingTrainee(TraineeName.From("Daniel"), Age.From(64), VisualAcuity.From(52));
+            var driver2Will = WIll.From("my will");
 
             var extremeDriving = new ExtremeDrivingCourse(null);
             extremeDriving.Enroll(driver1, driver1Will);
