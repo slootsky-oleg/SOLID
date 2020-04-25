@@ -71,34 +71,42 @@ namespace LCP.Notifications
 
             if (source.IsCourseNotification)
             {
-                var courseNotification = (CourseNotification)source;
+                var courseNotification = (CourseNotification) source;
                 dto.CourseType = courseNotification.CourseType;
             }
             else if (source.IsResourceNotification)
             {
-                var resourceNotification = (ResourceNotification)source;
+                var resourceNotification = (ResourceNotification) source;
                 dto.ResourceType = resourceNotification.ResourceType;
             }
 
             var audienceTypes = new Dictionary<int, string>();
-            foreach (TargetAudience value in Enum.GetValues(source.TargetAudience.GetType()))
+            if (source.IsCourseNotification && ((CourseNotification) source).CourseType == CourseType.Scheduling)
             {
-                if (source.TargetAudience.HasFlag(value))
-                {
-                    if (source.IsCourseNotification && ((CourseNotification)source).CourseType == CourseType.Scheduling && value == TargetAudience.User)
-                    {
-                        audienceTypes.Add((int) value, TextProvider.Get("Notification_TargetAudience_Participant"));
-                    }
-                    else
-                    {
-                        audienceTypes.Add((int)value, TextProvider.Get("Notification_TargetAudience_" + value));
-                    }
-                }
+                audienceTypes.Add((int)TargetAudience.User, TextProvider.Get("Notification_TargetAudience_Participant"));
+            }
+
+            if (source.IsCourseNotification && ((CourseNotification)source).CourseType != CourseType.Scheduling)
+            {
+                audienceTypes.Add((int)TargetAudience.User, TextProvider.Get("Notification_TargetAudience_" + (int)TargetAudience.User));
+                audienceTypes.Add((int)TargetAudience.Manager, TextProvider.Get("Notification_TargetAudience_" + (int)TargetAudience.Manager));
+            }
+
+            if (source.IsResourceNotification && ((ResourceNotification)source).ResourceType == ResourceType.Human)
+            {
+                audienceTypes.Add((int)TargetAudience.User, TextProvider.Get("Notification_TargetAudience_Participant"));
             }
 
             dto.AvailableTargetAudiences = audienceTypes;
 
             return dto;
+        }
+
+        public long Save(NotificationDto dto)
+        {
+            //fill common fields
+            //validate entity type
+            //validate audiences
         }
     }
 }
