@@ -41,15 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Courses\Course.cs" />
-    <Compile Include="Demo.cs" />
+    <Compile Include="Application\TextProvider.cs" />
+    <Compile Include="Notifications\NotificationService.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Notifications\NotificationRepository.cs" />
+    <Compile Include="Notifications\CourseNotification.cs" />
+    <Compile Include="Notifications\EntityType.cs" />
+    <Compile Include="Notifications\Notification.cs" />
+    <Compile Include="Notifications\ResourceNotification.cs" />
+    <Compile Include="Notifications\TargetAudience.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scores\PilotScore.cs" />
-    <Compile Include="Scores\Score.cs" />
-    <Compile Include="Subjects\BinarySubject.cs" />
-    <Compile Include="Subjects\Subject.cs" />
-    <Compile Include="Trainees\Pilot.cs" />
-    <Compile Include="Trainees\Trainee.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
