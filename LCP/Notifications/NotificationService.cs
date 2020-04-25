@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using LCP.Application;
 
@@ -7,7 +8,6 @@ namespace LCP.Notifications
     public class NotificationService
     {
         private readonly NotificationRepository notificationRepository;
-        private readonly TextProvider textProvider;
 
         public NotificationService()
         {
@@ -18,6 +18,7 @@ namespace LCP.Notifications
         {
             var notifications = notificationRepository.GetAll();
 
+            var result = new List<NotificationDto>();
             foreach (var source in notifications)
             {
                 var dto = new NotificationDto();
@@ -25,7 +26,6 @@ namespace LCP.Notifications
                 dto.Name = source.Name;
                 dto.Active = source.Active;
                 dto.EntityType = source.EntityType;
-                dto.TargetAudience = source.TargetAudience;
 
                 if (source.IsCourseNotification)
                 {
@@ -34,22 +34,71 @@ namespace LCP.Notifications
                 }
                 else if (source.IsResourceNotification)
                 {
-                    var resourceNotification = (ResourceNotification)source;
+                    var resourceNotification = (ResourceNotification) source;
                     dto.AdditionalInfo = TextProvider.Get("Notification_ResourceType_" + resourceNotification.ResourceType);
                 }
+
+                foreach (TargetAudience value in Enum.GetValues(source.TargetAudience.GetType()))
+                {
+                    if (source.TargetAudience.HasFlag(value))
+                    {
+                        if (source.IsCourseNotification && ((CourseNotification) source).CourseType == CourseType.Scheduling && value == TargetAudience.User)
+                        {
+                            dto.TargetAudience += TextProvider.Get("Notification_TargetAudience_Participant");
+                        }
+                        else
+                        {
+                            dto.TargetAudience += TextProvider.Get("Notification_TargetAudience_" + value);
+                        }
+                    }
+                }
+
+                result.Add(dto);
             }
+
+            return result;
         }
-    }
 
-    //TODO: inherit specific dto for each notification. Their goal - create Additional info and target audience descriptions
-    public class NotificationDto
-    {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public bool Active { get; set; }
-        public EntityType EntityType { get; set; }
-        public TargetAudience TargetAudience { get; set; }
+        public NotificationDto Get(int id)
+        {
+            var source = notificationRepository.Get(id);
 
-        public string AdditionalInfo { get; set; }
+            var dto = new NotificationDto();
+            dto.Id = source.Id;
+            dto.Name = source.Name;
+            dto.Active = source.Active;
+            dto.EntityType = source.EntityType;
+
+            if (source.IsCourseNotification)
+            {
+                var courseNotification = (CourseNotification)source;
+                dto.CourseType = courseNotification.CourseType;
+            }
+            else if (source.IsResourceNotification)
+            {
+                var resourceNotification = (ResourceNotification)source;
+                dto.ResourceType = resourceNotification.ResourceType;
+            }
+
+            var audienceTypes = new Dictionary<int, string>();
+            foreach (TargetAudience value in Enum.GetValues(source.TargetAudience.GetType()))
+            {
+                if (source.TargetAudience.HasFlag(value))
+                {
+                    if (source.IsCourseNotification && ((CourseNotification)source).CourseType == CourseType.Scheduling && value == TargetAudience.User)
+                    {
+                        audienceTypes.Add((int) value, TextProvider.Get("Notification_TargetAudience_Participant"));
+                    }
+                    else
+                    {
+                        audienceTypes.Add((int)value, TextProvider.Get("Notification_TargetAudience_" + value));
+                    }
+                }
+            }
+
+            dto.AvailableTargetAudiences = audienceTypes;
+
+            return dto;
+        }
     }
 }

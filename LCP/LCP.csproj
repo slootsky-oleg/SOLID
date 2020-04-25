@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\TextProvider.cs" />
+    <Compile Include="Notifications\NotificationDto.cs" />
     <Compile Include="Notifications\NotificationService.cs" />
-    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Notifications\NotificationRepository.cs" />
     <Compile Include="Notifications\CourseNotification.cs" />
     <Compile Include="Notifications\EntityType.cs" />

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 
 namespace LCP.Notifications
 {
@@ -15,6 +16,15 @@ namespace LCP.Notifications
         {
             //DAL logic here
             return new List<Notification>();
+        }
+
+        public Notification Get(long id)
+        {
+            //DAL logic here
+            //return new CourseNotification();
+            //return new ResourceNotification();
+            //...
+            return null;
         }
     }
 }
