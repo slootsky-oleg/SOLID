@@ -68,6 +68,7 @@ namespace LCP.Notifications
             dto.Name = source.Name;
             dto.Active = source.Active;
             dto.EntityType = source.EntityType;
+            dto.TargetAudience = source.TargetAudience;
 
             if (source.IsCourseNotification)
             {

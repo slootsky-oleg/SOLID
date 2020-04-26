@@ -3,5 +3,6 @@
     public enum CourseTargetAudience
     {
         //TODO add audiences
+        User
     }
 }

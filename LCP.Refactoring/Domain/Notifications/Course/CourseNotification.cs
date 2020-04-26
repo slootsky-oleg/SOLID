@@ -30,6 +30,7 @@ namespace LCP.Refactoring.Domain.Notifications.Course
             const string textIdPrefix = "Notification_CourseType_";
             return textProvider.Get(textIdPrefix + CourseType);
         }
+
         public string GetTargetAudiencesInfo(ITextProvider textProvider)
         {
             const string textIdPrefix = "Notification_CourseType_TargetAudience_";
