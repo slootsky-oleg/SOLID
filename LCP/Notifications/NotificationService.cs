@@ -44,11 +44,11 @@ namespace LCP.Notifications
                     {
                         if (source.IsCourseNotification && ((CourseNotification) source).CourseType == CourseType.Scheduling && value == TargetAudience.User)
                         {
-                            dto.TargetAudience += TextProvider.Get("Notification_TargetAudience_Participant");
+                            dto.TargetAudienceText += TextProvider.Get("Notification_TargetAudience_Participant");
                         }
                         else
                         {
-                            dto.TargetAudience += TextProvider.Get("Notification_TargetAudience_" + value);
+                            dto.TargetAudienceText += TextProvider.Get("Notification_TargetAudience_" + value);
                         }
                     }
                 }
@@ -104,9 +104,59 @@ namespace LCP.Notifications
 
         public long Save(NotificationDto dto)
         {
-            //fill common fields
-            //validate entity type
-            //validate audiences
+            Notification notification;
+            switch (dto.EntityType)
+            {
+                case EntityType.Course:
+                    notification = new CourseNotification();
+                    break;
+                case EntityType.Resource:
+                    notification = new ResourceNotification();
+                    break;
+                case EntityType.Event:
+                    throw new NotImplementedException("Event notification will be implemented in the future");
+                default:
+                    throw new InvalidOperationException($"Unknown notification type [{dto.EntityType}]");
+            }
+
+            notification.Id = dto.Id;
+            notification.Name = dto.Name;
+            notification.Active = dto.Active;
+            notification.EntityType = dto.EntityType;
+            notification.TargetAudience = dto.TargetAudience;
+
+            if (notification.IsCourseNotification)
+            {
+                var courseNotification = (CourseNotification) notification;
+                courseNotification.CourseType = dto.CourseType;
+                if (courseNotification.CourseType == CourseType.Scheduling && (notification.TargetAudience & TargetAudience.Manager) > 0)
+                {
+                    throw new InvalidOperationException("Invalid target audience");
+                }
+            }
+
+            if (notification.IsResourceNotification)
+            {
+                var resourceNotification = (ResourceNotification)notification;
+                resourceNotification.ResourceType = dto.ResourceType;
+
+                // possible validation bug here
+                if (resourceNotification.ResourceType == ResourceType.Physical && (notification.TargetAudience & TargetAudience.Manager) > 0)
+                {
+                    throw new InvalidOperationException("Invalid target audience");
+                }
+            }
+
+            if (notification.IsEventNotification)
+            {
+                //will be implemented in next versions
+            }
+
+            //possible security break here.
+            //possible entity type bug here for existing entity
+            notificationRepository.Save(notification);
+
+            return notification.Id;
         }
     }
 }

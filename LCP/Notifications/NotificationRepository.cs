@@ -26,5 +26,13 @@ namespace LCP.Notifications
             //...
             return null;
         }
+
+        public void Save(Notification notification)
+        {
+            //DAL logic here
+            //if (notification.IsCourseNotification)
+            //if (notification.IsResourceNotification)
+            //...
+        }
     }
 }

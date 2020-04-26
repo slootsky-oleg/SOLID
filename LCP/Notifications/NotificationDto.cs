@@ -9,7 +9,8 @@ namespace LCP.Notifications
         public string Name { get; set; }
         public bool Active { get; set; }
         public EntityType EntityType { get; set; }
-        public string TargetAudience { get; set; }
+        public TargetAudience TargetAudience { get; set; }
+        public string TargetAudienceText { get; set; }
         public string AdditionalInfo { get; set; }
         public CourseType CourseType { get; set; }
         public ResourceType ResourceType { get; set; }

@@ -1,5 +1,8 @@
-﻿namespace LCP.Notifications
+﻿using System;
+
+namespace LCP.Notifications
 {
+    [Flags]
     public enum TargetAudience
     {
         User,

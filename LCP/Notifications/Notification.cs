@@ -1,4 +1,6 @@
-﻿namespace LCP.Notifications
+﻿using System;
+
+namespace LCP.Notifications
 {
     public abstract class Notification
     {
@@ -10,5 +12,6 @@
 
         public bool IsResourceNotification => EntityType == EntityType.Resource;
         public bool IsCourseNotification => EntityType == EntityType.Course;
+        public bool IsEventNotification => throw new NotImplementedException("Event notification will be implemented in the future");
     }
 }
