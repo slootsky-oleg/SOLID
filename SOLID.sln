@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1022
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRP", "SOLID\SRP.csproj", "{857C2EFB-2A81-47FE-A99C-56A5DF6B3B77}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OCP.Refactoring", "OCP.Refactoring\OCP.Refactoring.csproj", "{1E01F940-A7B8-4258-AE46-5A98C6337E34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCP", "LCP\LCP.csproj", "{732316DD-4855-4FCE-93B3-E6FEB6A895CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCP.Refactoring", "LCP.Refactoring\LCP.Refactoring.csproj", "{DF47A7B7-6FA9-429D-8ACF-BFF97CF5A9DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{732316DD-4855-4FCE-93B3-E6FEB6A895CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{732316DD-4855-4FCE-93B3-E6FEB6A895CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{732316DD-4855-4FCE-93B3-E6FEB6A895CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF47A7B7-6FA9-429D-8ACF-BFF97CF5A9DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF47A7B7-6FA9-429D-8ACF-BFF97CF5A9DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF47A7B7-6FA9-429D-8ACF-BFF97CF5A9DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF47A7B7-6FA9-429D-8ACF-BFF97CF5A9DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

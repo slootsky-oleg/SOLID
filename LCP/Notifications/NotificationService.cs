@@ -30,12 +30,12 @@ namespace LCP.Notifications
                 if (source.IsCourseNotification)
                 {
                     var courseNotification = (CourseNotification) source;
-                    dto.AdditionalInfo = TextProvider.Get("Notification_CourseType_" + courseNotification.CourseType);
+                    dto.TypeInfo = TextProvider.Get("Notification_CourseType_" + courseNotification.CourseType);
                 }
                 else if (source.IsResourceNotification)
                 {
                     var resourceNotification = (ResourceNotification) source;
-                    dto.AdditionalInfo = TextProvider.Get("Notification_ResourceType_" + resourceNotification.ResourceType);
+                    dto.TypeInfo = TextProvider.Get("Notification_ResourceType_" + resourceNotification.ResourceType);
                 }
 
                 foreach (TargetAudience value in Enum.GetValues(source.TargetAudience.GetType()))

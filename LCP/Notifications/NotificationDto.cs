@@ -11,7 +11,7 @@ namespace LCP.Notifications
         public EntityType EntityType { get; set; }
         public TargetAudience TargetAudience { get; set; }
         public string TargetAudienceText { get; set; }
-        public string AdditionalInfo { get; set; }
+        public string TypeInfo { get; set; }
         public CourseType CourseType { get; set; }
         public ResourceType ResourceType { get; set; }
         public Dictionary<int, string> AvailableTargetAudiences { get; set; }
