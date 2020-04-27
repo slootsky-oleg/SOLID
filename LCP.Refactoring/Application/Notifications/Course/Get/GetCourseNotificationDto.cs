@@ -6,7 +6,7 @@ using LCP.Refactoring.Domain.Services;
 
 namespace LCP.Refactoring.Application.Notifications.Course.Get
 {
-    public class CourseNotificationDto
+    public class GetCourseNotificationDto
     {
         private readonly CourseTargetAudienceTextBuilder audienceTextBuilder;
 
@@ -16,7 +16,7 @@ namespace LCP.Refactoring.Application.Notifications.Course.Get
         public CourseType CourseType { get; }
         public IList<TargetAudienceDto<CourseTargetAudience>> TargetAudiences;
 
-        public CourseNotificationDto(ITextProvider textProvider, CourseNotification source)
+        public GetCourseNotificationDto(ITextProvider textProvider, CourseNotification source)
         {
             this.audienceTextBuilder = new CourseTargetAudienceTextBuilder(textProvider, source);
 

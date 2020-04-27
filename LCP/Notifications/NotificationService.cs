@@ -38,6 +38,7 @@ namespace LCP.Notifications
                     dto.TypeInfo = TextProvider.Get("Notification_ResourceType_" + resourceNotification.ResourceType);
                 }
 
+                //TODO: resource doesn't have notifications
                 foreach (TargetAudience value in Enum.GetValues(source.TargetAudience.GetType()))
                 {
                     if (source.TargetAudience.HasFlag(value))
@@ -129,7 +130,10 @@ namespace LCP.Notifications
             if (notification.IsCourseNotification)
             {
                 var courseNotification = (CourseNotification) notification;
-                courseNotification.CourseType = dto.CourseType;
+
+                //Course type is not changeable
+
+                //Audience Manager cannot be used with Scheduling course
                 if (courseNotification.CourseType == CourseType.Scheduling && (notification.TargetAudience & TargetAudience.Manager) > 0)
                 {
                     throw new InvalidOperationException("Invalid target audience");

@@ -15,12 +15,12 @@ namespace LCP.Refactoring.Application.Notifications.Course.Get
             this.textProvider = textProvider;
         }
 
-        public CourseNotificationDto Get(long id)
+        public GetCourseNotificationDto Get(long id)
         {
             var source = repository.Get(id) 
                          ?? throw new NotificationNotFoundException(id);
 
-            return new CourseNotificationDto(textProvider, source);
+            return new GetCourseNotificationDto(textProvider, source);
         }
     }
 }
