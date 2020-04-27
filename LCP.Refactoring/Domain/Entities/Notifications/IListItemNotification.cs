@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using LCP.Refactoring.Domain.Notifications.Course;
+using LCP.Refactoring.Domain.Entities.Notifications.Course;
 using LCP.Refactoring.Domain.Services;
+using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Domain.Notifications
+namespace LCP.Refactoring.Domain.Entities.Notifications
 {
     public interface IListItemNotification
     {
-        long Id { get; }
+        Id Id { get; }
         string Name { get; }
         bool IsActive { get; }
         CourseType CourseType { get; }

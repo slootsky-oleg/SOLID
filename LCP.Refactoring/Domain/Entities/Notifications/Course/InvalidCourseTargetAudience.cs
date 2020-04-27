@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LCP.Refactoring.Domain.Notifications.Course
+namespace LCP.Refactoring.Domain.Entities.Notifications.Course
 {
     public class InvalidCourseTargetAudience : Exception
     {

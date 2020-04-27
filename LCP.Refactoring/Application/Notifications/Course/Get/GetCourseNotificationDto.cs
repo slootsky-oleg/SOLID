@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LCP.Refactoring.Domain.Notifications;
-using LCP.Refactoring.Domain.Notifications.Course;
+using LCP.Refactoring.Domain.Entities.Notifications;
+using LCP.Refactoring.Domain.Entities.Notifications.Course;
 using LCP.Refactoring.Domain.Services;
+using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Application.Notifications.Course.Get
 {
@@ -10,7 +11,7 @@ namespace LCP.Refactoring.Application.Notifications.Course.Get
     {
         private readonly CourseTargetAudienceTextBuilder audienceTextBuilder;
 
-        public long Id { get; }
+        public Id Id { get; }
         public string Name { get; }
         public bool Active { get; }
         public CourseType CourseType { get; }

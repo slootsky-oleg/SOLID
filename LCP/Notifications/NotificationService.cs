@@ -43,7 +43,7 @@ namespace LCP.Notifications
                 {
                     if (source.TargetAudience.HasFlag(value))
                     {
-                        if (source.IsCourseNotification && ((CourseNotification) source).CourseType == CourseType.Scheduling && value == TargetAudience.User)
+                        if (source.IsCourseNotification && ((CourseNotification) source).CourseType == CourseType.Corporate && value == TargetAudience.User)
                         {
                             dto.TargetAudienceText += TextProvider.Get("Notification_TargetAudience_Participant");
                         }
@@ -83,12 +83,12 @@ namespace LCP.Notifications
             }
 
             var audienceTypes = new Dictionary<int, string>();
-            if (source.IsCourseNotification && ((CourseNotification) source).CourseType == CourseType.Scheduling)
+            if (source.IsCourseNotification && ((CourseNotification) source).CourseType == CourseType.Corporate)
             {
                 audienceTypes.Add((int)TargetAudience.User, TextProvider.Get("Notification_TargetAudience_Participant"));
             }
 
-            if (source.IsCourseNotification && ((CourseNotification)source).CourseType != CourseType.Scheduling)
+            if (source.IsCourseNotification && ((CourseNotification)source).CourseType != CourseType.Corporate)
             {
                 audienceTypes.Add((int)TargetAudience.User, TextProvider.Get("Notification_TargetAudience_" + (int)TargetAudience.User));
                 audienceTypes.Add((int)TargetAudience.Manager, TextProvider.Get("Notification_TargetAudience_" + (int)TargetAudience.Manager));
@@ -104,7 +104,7 @@ namespace LCP.Notifications
             return dto;
         }
 
-        public long Save(NotificationDto dto)
+        public long SaveOrCreate(NotificationDto dto)
         {
             Notification notification;
             switch (dto.EntityType)
@@ -134,7 +134,7 @@ namespace LCP.Notifications
                 //Course type is not changeable
 
                 //Audience Manager cannot be used with Scheduling course
-                if (courseNotification.CourseType == CourseType.Scheduling && (notification.TargetAudience & TargetAudience.Manager) > 0)
+                if (courseNotification.CourseType == CourseType.Corporate && (notification.TargetAudience & TargetAudience.Manager) > 0)
                 {
                     throw new InvalidOperationException("Invalid target audience");
                 }

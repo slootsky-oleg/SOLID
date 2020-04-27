@@ -7,6 +7,6 @@
 
     public enum CourseType
     {
-        Scheduling
+        Corporate
     }
 }

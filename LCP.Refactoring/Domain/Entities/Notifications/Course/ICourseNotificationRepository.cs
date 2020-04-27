@@ -1,4 +1,4 @@
-﻿namespace LCP.Refactoring.Domain.Notifications.Course
+﻿namespace LCP.Refactoring.Domain.Entities.Notifications.Course
 {
     public interface ICourseNotificationRepository
     {

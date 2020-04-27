@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using LCP.Refactoring.Domain.Notifications.Course;
 
-namespace LCP.Refactoring.Domain.Notifications
+namespace LCP.Refactoring.Domain.Entities.Notifications
 {
     public interface INotificationRepository
     {

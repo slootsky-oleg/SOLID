@@ -1,5 +1,5 @@
-﻿using LCP.Refactoring.Domain.Notifications;
-using LCP.Refactoring.Domain.Notifications.Course;
+﻿using LCP.Refactoring.Domain.Entities.Notifications;
+using LCP.Refactoring.Domain.Entities.Notifications.Course;
 
 namespace LCP.Refactoring.Application.Notifications.Course.Save
 {

@@ -1,9 +1,7 @@
 ﻿using System;
-using LCP.Refactoring.Application.Notifications.Course;
-using LCP.Refactoring.Domain.Notifications;
-using LCP.Refactoring.Domain.Services;
+using LCP.Refactoring.Domain.Entities.Notifications;
 
-namespace LCP.Refactoring.Application
+namespace LCP.Refactoring.Application.Notifications
 {
     public class TargetAudienceDto <T> where T : struct, IConvertible
     {

@@ -1,33 +1,77 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using LCP.Refactoring.Domain.Services;
+using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Domain.Notifications.Course
+namespace LCP.Refactoring.Domain.Entities.Notifications.Course
 {
     public class CourseNotification : IListItemNotification
     {
+        private static readonly IDictionary<CourseType, IList<CourseTargetAudience>> audiencesByType = GetAudiencesByType();
+
         private readonly Notification baseNotification;
 
         //Consider using HashSet if order is not required
         private readonly IList<TargetAudience<CourseTargetAudience>> targetAudiences;
 
-        public long Id => baseNotification.Id;
+        public Id Id => baseNotification.Id;
+
         public string Name
         {
             get => baseNotification.Name;
             set => baseNotification.Name = value;
-        } 
+        }
+
         public bool IsActive => baseNotification.IsActive;
+
         public CourseType CourseType { get; }
 
         public EntityType EntityType => EntityType.Course;
 
         public IReadOnlyList<TargetAudience<CourseTargetAudience>> TargetAudiences => targetAudiences.ToList();
-        
-        public CourseNotification(long id, string name, bool isActive, CourseType courseType)
+
+        private CourseNotification(CourseType courseType)
+        {
+            CourseType = courseType;
+            targetAudiences = new List<TargetAudience<CourseTargetAudience>>();
+
+            var courseAudiences = audiencesByType[courseType];
+            targetAudiences = courseAudiences
+                .Select(a => new TargetAudience<CourseTargetAudience>(a))
+                .ToList();
+
+        }
+
+        public CourseNotification(string name, bool isActive, CourseType courseType)
+            : this(courseType)
+        {
+            this.baseNotification = new Notification(name, isActive);
+        }
+
+        private static Dictionary<CourseType, IList<CourseTargetAudience>> GetAudiencesByType()
+        {
+            return new
+                Dictionary<CourseType, IList<CourseTargetAudience>>
+                {
+                    {
+                        CourseType.Private,
+                        new List<CourseTargetAudience> {CourseTargetAudience.User}
+                    },
+                    {
+                        CourseType.Corporate,
+                        new List<CourseTargetAudience>
+                        {
+                            CourseTargetAudience.User,
+                            CourseTargetAudience.Manager
+                        }
+                    },
+                };
+        }
+
+        public CourseNotification(Id id, string name, bool isActive, CourseType courseType)
+            : this(courseType)
         {
             this.baseNotification = new Notification(id, name, isActive);
-            CourseType = courseType;
         }
 
         public string GetTypeInfo(ITextProvider textProvider)
@@ -61,12 +105,6 @@ namespace LCP.Refactoring.Domain.Notifications.Course
 
         public void CheckTargetAudience(CourseTargetAudience audience)
         {
-            if (CourseType == CourseType.Scheduling 
-                && audience == CourseTargetAudience.Manager)
-            {
-                throw new InvalidCourseTargetAudience(CourseType, audience);
-            }
-
             var item = GetTargetAudience(audience);
             item.Check();
         }

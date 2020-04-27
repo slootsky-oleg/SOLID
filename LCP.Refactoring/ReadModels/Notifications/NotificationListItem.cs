@@ -1,4 +1,4 @@
-﻿using LCP.Refactoring.Domain.Notifications;
+﻿using LCP.Refactoring.Domain.Entities.Notifications;
 
 namespace LCP.Refactoring.ReadModels.Notifications
 {

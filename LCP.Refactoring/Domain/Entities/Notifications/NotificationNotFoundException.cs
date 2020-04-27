@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LCP.Refactoring.Domain.Notifications
+namespace LCP.Refactoring.Domain.Entities.Notifications
 {
     public class NotificationNotFoundException : Exception
     {

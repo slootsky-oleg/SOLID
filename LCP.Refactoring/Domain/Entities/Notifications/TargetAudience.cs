@@ -1,12 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LCP.Refactoring.Domain.Notifications
+namespace LCP.Refactoring.Domain.Entities.Notifications
 {
     public class TargetAudience <T> where T: struct, IConvertible
     {
         public T Value { get; protected set; }
         public bool IsChecked { get; protected set; }
+
+        public TargetAudience(T value)
+        {
+            Value = value;
+        }
+
+        public TargetAudience(T value, bool isChecked)
+            : this(value)
+        {
+            IsChecked = isChecked;
+        }
 
         public void Check()
         {

@@ -1,4 +1,4 @@
-﻿namespace LCP.Refactoring.Domain.Notifications
+﻿namespace LCP.Refactoring.Domain.Entities.Notifications
 {
     public enum EntityType
     {
