@@ -5,7 +5,7 @@ using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications.Course
 {
-    public class CourseNotification : IListItemNotification
+    public class CourseNotification : NotificationSearchResult
     {
         private static readonly IDictionary<CourseType, IList<CourseTargetAudience>> audiencesByType = GetAudiencesByType();
 

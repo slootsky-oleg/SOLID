@@ -5,7 +5,7 @@ using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications
 {
-    public interface IListItemNotification
+    public interface NotificationSearchResult
     {
         Id Id { get; }
         string Name { get; }

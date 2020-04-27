@@ -4,6 +4,6 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
 {
     public interface INotificationRepository
     {
-        IEnumerable<IListItemNotification> GetAll();
+        IEnumerable<NotificationSearchResult> GetAll();
     }
 }

@@ -4,6 +4,6 @@ namespace LCP.Refactoring.ReadModels.Notifications
 {
     public interface INotificationReadModelStore
     {
-        IEnumerable<NotificationListItem> GetAll();
+        IEnumerable<NotificationSearchResult> Search();
     }
 }

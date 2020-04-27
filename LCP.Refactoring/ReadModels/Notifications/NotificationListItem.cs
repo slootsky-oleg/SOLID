@@ -2,7 +2,7 @@
 
 namespace LCP.Refactoring.ReadModels.Notifications
 {
-    public class NotificationListItem
+    public class NotificationSearchResult
     {
         public long Id { get; set; }
         public string Name { get; set; }
