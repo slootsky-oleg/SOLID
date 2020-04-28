@@ -12,7 +12,7 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
         bool IsActive { get; }
         CourseType CourseType { get; }
         EntityType EntityType { get; }
-        IReadOnlyList<TargetAudience<CourseTargetAudience>> TargetAudiences { get; }
+        IReadOnlyList<TargetAudienceItem<CourseTargetAudience>> TargetAudiences { get; }
         string GetTypeInfo(ITextProvider textProvider);
         string GetTargetAudiencesInfo(ITextProvider textProvider);
     }

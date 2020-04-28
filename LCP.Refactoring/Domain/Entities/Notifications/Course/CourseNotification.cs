@@ -5,47 +5,33 @@ using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications.Course
 {
-    public class CourseNotification : NotificationSearchResult
+    public class CourseNotification : Notification<CourseTargetAudience>
     {
-        private static readonly IDictionary<CourseType, IList<CourseTargetAudience>> audiencesByType = GetAudiencesByType();
-
-        private readonly Notification baseNotification;
-
-        //Consider using HashSet if order is not required
-        private readonly IList<TargetAudience<CourseTargetAudience>> targetAudiences;
-
-        public Id Id => baseNotification.Id;
-
-        public string Name
-        {
-            get => baseNotification.Name;
-            set => baseNotification.Name = value;
-        }
-
-        public bool IsActive => baseNotification.IsActive;
+        private static readonly IDictionary<CourseType, IList<CourseTargetAudience>> AudiencesByType = GetAudiencesByType();
 
         public CourseType CourseType { get; }
 
         public EntityType EntityType => EntityType.Course;
 
-        public IReadOnlyList<TargetAudience<CourseTargetAudience>> TargetAudiences => targetAudiences.ToList();
-
-        private CourseNotification(CourseType courseType)
+        public CourseNotification(string name, bool isActive, CourseType courseType) 
+            : base(name, isActive, BuildTargetAudiences(courseType))
         {
             CourseType = courseType;
-            targetAudiences = new List<TargetAudience<CourseTargetAudience>>();
-
-            var courseAudiences = audiencesByType[courseType];
-            targetAudiences = courseAudiences
-                .Select(a => new TargetAudience<CourseTargetAudience>(a))
-                .ToList();
-
         }
 
-        public CourseNotification(string name, bool isActive, CourseType courseType)
-            : this(courseType)
+
+        public CourseNotification(Id id, string name, bool isActive, CourseType courseType)
+            : base(id, name, isActive, BuildTargetAudiences(courseType))
         {
-            this.baseNotification = new Notification(name, isActive);
+            CourseType = courseType;
+        }
+
+        private static IList<CourseTargetAudienceItem> BuildTargetAudiences(CourseType courseType)
+        {
+            var courseAudiences = AudiencesByType[courseType];
+            return courseAudiences
+                .Select(a => new CourseTargetAudienceItem(a))
+                .ToList();
         }
 
         private static Dictionary<CourseType, IList<CourseTargetAudience>> GetAudiencesByType()
@@ -66,12 +52,6 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Course
                         }
                     },
                 };
-        }
-
-        public CourseNotification(Id id, string name, bool isActive, CourseType courseType)
-            : this(courseType)
-        {
-            this.baseNotification = new Notification(id, name, isActive);
         }
 
         public string GetTypeInfo(ITextProvider textProvider)
@@ -95,29 +75,12 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Course
 
         public void Activate()
         {
-            baseNotification.IsActive = true;
+            IsActive = true;
         }
 
         public void Deactivate()
         {
-            baseNotification.IsActive = false;
-        }
-
-        public void CheckTargetAudience(CourseTargetAudience audience)
-        {
-            var item = GetTargetAudience(audience);
-            item.Check();
-        }
-
-        public void UncheckTargetAudience(CourseTargetAudience audience)
-        {
-            var item = GetTargetAudience(audience);
-            item.Uncheck();
-        }
-
-        private TargetAudience<CourseTargetAudience> GetTargetAudience(CourseTargetAudience audience)
-        {
-            return targetAudiences.Single(a => a.Value == audience);
+            IsActive = false;
         }
     }
 }

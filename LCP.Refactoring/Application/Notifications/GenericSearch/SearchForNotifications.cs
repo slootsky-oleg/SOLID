@@ -12,9 +12,9 @@ namespace LCP.Refactoring.Application.Notifications.GenericSearch
             this.store = store;
         }
 
-        public NotificationSearchResult Execute()
-        {
-            var notifications = store.Search();
-        }
+        //public NotificationSearchResult Execute()
+        //{
+        //    var notifications = store.Search();
+        //}
     }
 }

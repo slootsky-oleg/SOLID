@@ -31,11 +31,11 @@ namespace LCP.Refactoring.Application.Notifications.Course.Get
                 .ToList();
         }
 
-        private TargetAudienceDto<CourseTargetAudience> BuildTargetAudience(TargetAudience<CourseTargetAudience> audience)
+        private TargetAudienceDto<CourseTargetAudience> BuildTargetAudience(TargetAudienceItem<CourseTargetAudience> audienceItem)
         {
-            var valueText = audienceTextBuilder.Build(audience.Value);
+            var valueText = audienceTextBuilder.Build(audienceItem.Value);
 
-            return new TargetAudienceDto<CourseTargetAudience>(audience, valueText);
+            return new TargetAudienceDto<CourseTargetAudience>(audienceItem, valueText);
         }
     }
 }

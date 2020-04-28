@@ -3,34 +3,30 @@ using System.Collections.Generic;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications
 {
-    public class TargetAudience <T> where T: struct, IConvertible
+    public class TargetAudienceItem <T> : IEquatable<T> where T: struct, IConvertible
     {
         public T Value { get; protected set; }
         public bool IsChecked { get; protected set; }
 
-        public TargetAudience(T value)
+        public TargetAudienceItem(T value)
         {
             Value = value;
         }
 
-        public TargetAudience(T value, bool isChecked)
+        public TargetAudienceItem(T value, bool isChecked)
             : this(value)
         {
             IsChecked = isChecked;
         }
 
-        public void Check()
+        protected bool Equals(TargetAudienceItem<T> other)
         {
-            IsChecked = true;
-        }
-        public void Uncheck()
-        {
-            IsChecked = false;
+            return Value.Equals(other.Value);
         }
 
-        protected bool Equals(TargetAudience<T> other)
+        public bool Equals(T other)
         {
-            return EqualityComparer<T>.Default.Equals(Value, other.Value);
+            throw new NotImplementedException();
         }
 
         public override bool Equals(object obj)
@@ -38,20 +34,20 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((TargetAudience<T>) obj);
+            return Equals((TargetAudienceItem<T>) obj);
         }
 
         public override int GetHashCode()
         {
-            return EqualityComparer<T>.Default.GetHashCode(Value);
+            return Value.GetHashCode();
         }
 
-        public static bool operator ==(TargetAudience<T> left, TargetAudience<T> right)
+        public static bool operator ==(TargetAudienceItem<T> left, TargetAudienceItem<T> right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(TargetAudience<T> left, TargetAudience<T> right)
+        public static bool operator !=(TargetAudienceItem<T> left, TargetAudienceItem<T> right)
         {
             return !Equals(left, right);
         }

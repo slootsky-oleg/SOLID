@@ -9,7 +9,7 @@ namespace LCP.Refactoring.Application.Notifications
         public bool IsSelected { get; }
         public string ValueText { get; }
 
-        public TargetAudienceDto(TargetAudience<T> source, string valueText)
+        public TargetAudienceDto(TargetAudienceItem<T> source, string valueText)
         {
             Value = source.Value;
             IsSelected = source.IsChecked;

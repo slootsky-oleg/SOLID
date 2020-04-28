@@ -54,13 +54,15 @@
     <Compile Include="Application\Notifications\Course\TargetAudiences\CheckCourseNotificationTargetAudience.cs" />
     <Compile Include="Application\Notifications\GenericSearch\SearchForNotifications.cs" />
     <Compile Include="Application\Notifications\TargetAudienceDto.cs" />
+    <Compile Include="Domain\Entities\Notifications\Course\CourseTargetAudienceItem.cs" />
     <Compile Include="Domain\Entities\Notifications\Course\CourseTargetAudienceProvider.cs" />
     <Compile Include="Domain\Entities\Notifications\Course\InvalidCourseTargetAudience.cs" />
     <Compile Include="Domain\Entities\Notifications\NotificationNotFoundException.cs" />
     <Compile Include="Domain\Entities\Notifications\Course\CourseNotification.cs" />
     <Compile Include="Domain\Entities\Notifications\CourseType.cs" />
     <Compile Include="Domain\Entities\Notifications\Course\CourseTargetAudience.cs" />
-    <Compile Include="Domain\Entities\Notifications\TargetAudience.cs" />
+    <Compile Include="Domain\Entities\Notifications\Resource\ResourceNotification.cs" />
+    <Compile Include="Domain\Entities\Notifications\TargetAudienceItem.cs" />
     <Compile Include="Domain\Entities\Notifications\NotificationSearchResult.cs" />
     <Compile Include="Domain\Entities\Notifications\Course\ICourseNotificationRepository.cs" />
     <Compile Include="Domain\Services\ITextProvider.cs" />
