@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Notifications\Course\CourseNotificationSearchResult.cs" />
     <Compile Include="Notifications\EntityType.cs" />
+    <Compile Include="Notifications\Event\EventNotificationSearchResult.cs" />
     <Compile Include="Notifications\INotificationReadModelStore.cs" />
     <Compile Include="Notifications\INotificationSearchResult.cs" />
     <Compile Include="Notifications\Resource\ResourceNotificationSearchResult.cs" />
@@ -55,5 +56,6 @@
       <Name>LCP.Refactoring.Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

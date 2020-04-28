@@ -1,5 +1,6 @@
 ﻿using LCP.Refactoring.Domain.Entities.Notifications;
 using LCP.Refactoring.Domain.Entities.Notifications.Course;
+using LCP.Refactoring.Domain.Repositories;
 using LCP.Refactoring.Domain.Services;
 
 namespace LCP.Refactoring.Application.Notifications.Course.Get

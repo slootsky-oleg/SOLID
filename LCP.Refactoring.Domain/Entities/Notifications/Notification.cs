@@ -5,34 +5,34 @@ using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications
 {
-    public class Notification<T> where T : struct, IConvertible
+    public class Notification<TAudience> where TAudience : struct, IConvertible
     {
         public Id Id { get; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
 
-        private readonly IList<TargetAudienceItem<T>> targetAudiences;
+        private readonly IList<TargetAudienceItem<TAudience>> targetAudiences;
 
-        public IReadOnlyList<TargetAudienceItem<T>> TargetAudiences => targetAudiences.ToList();
+        public IReadOnlyList<TargetAudienceItem<TAudience>> TargetAudiences => targetAudiences.ToList();
 
 
         public Notification(string name)
-            : this(name, true, new List<TargetAudienceItem<T>>())
+            : this(name, true, new List<TargetAudienceItem<TAudience>>())
         {
         }
 
         public Notification(Id id, string name)
-            : this(id, name, true, new List<TargetAudienceItem<T>>())
+            : this(id, name, true, new List<TargetAudienceItem<TAudience>>())
         {
         }
 
-        public Notification(Id id, string name, bool isActive, IEnumerable<TargetAudienceItem<T>> targetAudienceItems)
+        public Notification(Id id, string name, bool isActive, IEnumerable<TargetAudienceItem<TAudience>> targetAudienceItems)
             : this(name, isActive, targetAudienceItems)
         {
             Id = id ?? throw new ArgumentNullException(nameof(id));
         }
 
-        public Notification(string name, bool isActive, IEnumerable<TargetAudienceItem<T>> targetAudienceItems)
+        public Notification(string name, bool isActive, IEnumerable<TargetAudienceItem<TAudience>> targetAudienceItems)
         {
             Name = name;
             IsActive = isActive;
@@ -50,19 +50,19 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
             IsActive = false;
         }
 
-        public void CheckTargetAudience(T audience)
+        public void CheckTargetAudience(TAudience audience)
         {
             var item = GetTargetAudience(audience);
             item.Check();
         }
 
-        public void UncheckTargetAudience(T audience)
+        public void UncheckTargetAudience(TAudience audience)
         {
             var item = GetTargetAudience(audience);
             item.Uncheck();
         }
 
-        private TargetAudienceItem<T> GetTargetAudience(T audience)
+        private TargetAudienceItem<TAudience> GetTargetAudience(TAudience audience)
         {
             return targetAudiences.Single(a => a.Value.Equals(audience));
         }

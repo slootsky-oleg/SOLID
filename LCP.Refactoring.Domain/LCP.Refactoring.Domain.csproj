@@ -45,8 +45,10 @@
     <Compile Include="Entities\Notifications\Course\CourseNotification.cs" />
     <Compile Include="Entities\Notifications\Course\CourseTargetAudience.cs" />
     <Compile Include="Entities\Notifications\Course\CourseTargetAudienceItem.cs" />
-    <Compile Include="Entities\Notifications\Course\CourseTargetAudienceProvider.cs" />
-    <Compile Include="Entities\Notifications\Course\ICourseNotificationRepository.cs" />
+    <Compile Include="Entities\Notifications\Event\EventTargetAudience.cs" />
+    <Compile Include="Entities\Notifications\Event\EventTargetAudienceItem.cs" />
+    <Compile Include="Entities\Notifications\Event\EventNotification.cs" />
+    <Compile Include="Repositories\ICourseNotificationRepository.cs" />
     <Compile Include="Entities\Notifications\Course\InvalidCourseTargetAudience.cs" />
     <Compile Include="Entities\Notifications\Notification.cs" />
     <Compile Include="Entities\Notifications\NotificationNotFoundException.cs" />
@@ -56,5 +58,6 @@
     <Compile Include="Services\ITextProvider.cs" />
     <Compile Include="Values\Id.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
