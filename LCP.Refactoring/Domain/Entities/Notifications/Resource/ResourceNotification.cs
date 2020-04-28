@@ -1,122 +1,103 @@
-﻿//using System.Collections.Generic;
-//using System.Linq;
-//using LCP.Refactoring.Domain.Services;
-//using LCP.Refactoring.Domain.Values;
+﻿using System.Collections.Generic;
+using System.Linq;
+using LCP.Refactoring.Domain.Services;
+using LCP.Refactoring.Domain.Values;
 
-//namespace LCP.Refactoring.Domain.Entities.Notifications.Course
-//{
-//    public class ResourceNotification// : NotificationSearchResult
-//    {
-//        private static readonly IDictionary<CourseType, IList<CourseTargetAudience>> audiencesByType = GetAudiencesByType();
+namespace LCP.Refactoring.Domain.Entities.Notifications.Course
+{
+    public class ResourceNotification// : NotificationSearchResult
+    {
+        private readonly Notification<int> baseNotification;
 
-//        private readonly Notification baseNotification;
+        public Id Id => baseNotification.Id;
 
-//        //Consider using HashSet if order is not required
-//        private readonly IList<CourseTargetAudienceItem> targetAudiences;
+        public string Name
+        {
+            get => baseNotification.Name;
+            set => baseNotification.Name = value;
+        }
 
-//        public Id Id => baseNotification.Id;
+        //Hide active
+        //public bool IsActive => baseNotification.IsActive;
 
-//        public string Name
-//        {
-//            get => baseNotification.Name;
-//            set => baseNotification.Name = value;
-//        }
+        public EntityType EntityType => EntityType.Resource;
 
-//        public bool IsActive => baseNotification.IsActive;
+        public ResourceNotification(string name)
+        {
+            var emptyTargetAudiences = new List<TargetAudienceItem<int>>();
+            this.baseNotification = new Notification(name, true, emptyTargetAudiences);
+        }
 
-//        public CourseType CourseType { get; }
+        private static Dictionary<CourseType, IList<CourseTargetAudience>> GetAudiencesByType()
+        {
+            return new
+                Dictionary<CourseType, IList<CourseTargetAudience>>
+                {
+                    {
+                        CourseType.Private,
+                        new List<CourseTargetAudience> {CourseTargetAudience.User}
+                    },
+                    {
+                        CourseType.Corporate,
+                        new List<CourseTargetAudience>
+                        {
+                            CourseTargetAudience.User,
+                            CourseTargetAudience.Manager
+                        }
+                    },
+                };
+        }
 
-//        public EntityType EntityType => EntityType.Course;
+        public ResourceNotification(Id id, string name, bool isActive, CourseType courseType)
+            : this(courseType)
+        {
+            this.baseNotification = new Notification(id, name, isActive);
+        }
 
-//        public IReadOnlyList<CourseTargetAudienceItem> TargetAudiences => targetAudiences.ToList();
+        public string GetTypeInfo(ITextProvider textProvider)
+        {
+            const string textIdPrefix = "Notification_CourseType_";
+            return textProvider.Get(textIdPrefix + CourseType);
+        }
 
-//        private ResourceNotification(CourseType courseType)
-//        {
-//            CourseType = courseType;
-//            targetAudiences = new List<CourseTargetAudienceItem>();
+        public string GetTargetAudiencesInfo(ITextProvider textProvider)
+        {
+            const string textIdPrefix = "Notification_CourseType_TargetAudience_";
 
-//            var courseAudiences = audiencesByType[courseType];
-//            targetAudiences = courseAudiences
-//                .Select(a => new CourseTargetAudienceItem(a))
-//                .ToList();
-//        }
+            var selectedAudiences = targetAudiences
+                .Where(a => a.IsChecked);
 
-//        public ResourceNotification(string name, bool isActive, CourseType courseType)
-//            : this(courseType)
-//        {
-//            this.baseNotification = new Notification(name, isActive);
-//        }
+            return selectedAudiences
+                .Aggregate(
+                    string.Empty,
+                    (current, audience) => current + textProvider.Get(textIdPrefix + audience.Value));
+        }
 
-//        private static Dictionary<CourseType, IList<CourseTargetAudience>> GetAudiencesByType()
-//        {
-//            return new
-//                Dictionary<CourseType, IList<CourseTargetAudience>>
-//                {
-//                    {
-//                        CourseType.Private,
-//                        new List<CourseTargetAudience> {CourseTargetAudience.User}
-//                    },
-//                    {
-//                        CourseType.Corporate,
-//                        new List<CourseTargetAudience>
-//                        {
-//                            CourseTargetAudience.User,
-//                            CourseTargetAudience.Manager
-//                        }
-//                    },
-//                };
-//        }
+        public void Activate()
+        {
+            baseNotification.IsActive = true;
+        }
 
-//        public ResourceNotification(Id id, string name, bool isActive, CourseType courseType)
-//            : this(courseType)
-//        {
-//            this.baseNotification = new Notification(id, name, isActive);
-//        }
+        public void Deactivate()
+        {
+            baseNotification.IsActive = false;
+        }
 
-//        public string GetTypeInfo(ITextProvider textProvider)
-//        {
-//            const string textIdPrefix = "Notification_CourseType_";
-//            return textProvider.Get(textIdPrefix + CourseType);
-//        }
+        public void CheckTargetAudience(CourseTargetAudience audience)
+        {
+            var item = GetTargetAudience(audience);
+            item.Check();
+        }
 
-//        public string GetTargetAudiencesInfo(ITextProvider textProvider)
-//        {
-//            const string textIdPrefix = "Notification_CourseType_TargetAudience_";
+        public void UncheckTargetAudience(CourseTargetAudience audience)
+        {
+            var item = GetTargetAudience(audience);
+            item.Uncheck();
+        }
 
-//            var selectedAudiences = targetAudiences
-//                .Where(a => a.IsChecked);
-
-//            return selectedAudiences
-//                .Aggregate(
-//                    string.Empty, 
-//                    (current, audience) => current + textProvider.Get(textIdPrefix + audience.Value));
-//        }
-
-//        public void Activate()
-//        {
-//            baseNotification.IsActive = true;
-//        }
-
-//        public void Deactivate()
-//        {
-//            baseNotification.IsActive = false;
-//        }
-
-//        public void CheckTargetAudience(CourseTargetAudience audience)
-//        {
-//            var item = GetTargetAudience(audience);
-//            item.Check();
-//        }
-
-//        public void UncheckTargetAudience(CourseTargetAudience audience)
-//        {
-//            var item = GetTargetAudience(audience);
-//            item.Uncheck();
-//        }
-
-//        private CourseTargetAudienceItem GetTargetAudience(CourseTargetAudience audience)
-//        {
-//            return targetAudiences.Single(a => a.Value == audience);
-//        }
-//    }
-//}
+        private CourseTargetAudienceItem GetTargetAudience(CourseTargetAudience audience)
+        {
+            return targetAudiences.Single(a => a.Value == audience);
+        }
+    }
+}

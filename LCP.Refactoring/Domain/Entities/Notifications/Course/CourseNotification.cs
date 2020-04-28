@@ -26,7 +26,7 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Course
             CourseType = courseType;
         }
 
-        private static IList<CourseTargetAudienceItem> BuildTargetAudiences(CourseType courseType)
+        private static IEnumerable<CourseTargetAudienceItem> BuildTargetAudiences(CourseType courseType)
         {
             var courseAudiences = AudiencesByType[courseType];
             return courseAudiences

@@ -15,6 +15,14 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
 
         public IReadOnlyList<TargetAudienceItem<T>> TargetAudiences => targetAudiences.ToList();
 
+
+        public Notification(string name, bool isActive)
+        {
+            Name = name;
+            IsActive = isActive;
+            this.targetAudiences = new List<TargetAudienceItem<T>>();
+        }
+
         public Notification(string name, bool isActive, IEnumerable<TargetAudienceItem<T>> targetAudienceItems)
         {
             Name = name;
