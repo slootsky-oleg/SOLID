@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCP.Refactoring.Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LCP.Refactoring.ReadModel", "LCP.Refactoring.ReadModel\LCP.Refactoring.ReadModel.csproj", "{C4DAB955-3198-4D56-A97F-6F152640E4EB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LCP.Refactoring", "LCP.Refactoring", "{5C7DD871-4779-43C7-863E-4FB8B21C4FA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{66C81575-3026-4867-8124-5D4D63CBF35D} = {5C7DD871-4779-43C7-863E-4FB8B21C4FA5}
+		{C5512CC4-FEFE-478C-82CB-61485F96D732} = {5C7DD871-4779-43C7-863E-4FB8B21C4FA5}
+		{C4DAB955-3198-4D56-A97F-6F152640E4EB} = {5C7DD871-4779-43C7-863E-4FB8B21C4FA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDCB1E7A-9251-49FE-8715-91325C31E6E4}
