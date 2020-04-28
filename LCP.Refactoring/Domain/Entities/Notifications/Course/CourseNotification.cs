@@ -7,6 +7,8 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Course
 {
     public class CourseNotification : Notification<CourseTargetAudience>
     {
+        //Once we see more logic depending on CourseType, class should be splitted farther.
+        //For example: PrivateCourseNotification and CorporateCourseNotification
         private static readonly IDictionary<CourseType, IList<CourseTargetAudience>> AudiencesByType = GetAudiencesByType();
 
         public CourseType CourseType { get; }
