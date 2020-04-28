@@ -2,6 +2,7 @@
 using LCP.Refactoring.Domain.Entities.Notifications.Course;
 using LCP.Refactoring.Domain.Services;
 using LCP.Refactoring.Domain.Values;
+using LCP.Refactoring.ReadModels.Notifications;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications
 {

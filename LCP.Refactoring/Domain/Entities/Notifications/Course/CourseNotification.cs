@@ -11,14 +11,11 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Course
 
         public CourseType CourseType { get; }
 
-        public EntityType EntityType => EntityType.Course;
-
         public CourseNotification(string name, bool isActive, CourseType courseType) 
             : base(name, isActive, BuildTargetAudiences(courseType))
         {
             CourseType = courseType;
         }
-
 
         public CourseNotification(Id id, string name, bool isActive, CourseType courseType)
             : base(id, name, isActive, BuildTargetAudiences(courseType))
@@ -52,25 +49,6 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Course
                         }
                     },
                 };
-        }
-
-        public string GetTypeInfo(ITextProvider textProvider)
-        {
-            const string textIdPrefix = "Notification_CourseType_";
-            return textProvider.Get(textIdPrefix + CourseType);
-        }
-
-        public string GetTargetAudiencesInfo(ITextProvider textProvider)
-        {
-            const string textIdPrefix = "Notification_CourseType_TargetAudience_";
-
-            var selectedAudiences = TargetAudiences
-                .Where(a => a.IsChecked);
-
-            return selectedAudiences
-                .Aggregate(
-                    string.Empty, 
-                    (current, audience) => current + textProvider.Get(textIdPrefix + audience.Value));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace LCP.Refactoring.Domain.Entities.Notifications
+﻿namespace LCP.Refactoring.ReadModels.Notifications
 {
     public enum EntityType
     {

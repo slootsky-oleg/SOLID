@@ -16,11 +16,20 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
         public IReadOnlyList<TargetAudienceItem<T>> TargetAudiences => targetAudiences.ToList();
 
 
-        public Notification(string name, bool isActive)
+        public Notification(string name)
+            : this(name, true, new List<TargetAudienceItem<T>>())
         {
-            Name = name;
-            IsActive = isActive;
-            this.targetAudiences = new List<TargetAudienceItem<T>>();
+        }
+
+        public Notification(Id id, string name)
+            : this(id, name, true, new List<TargetAudienceItem<T>>())
+        {
+        }
+
+        public Notification(Id id, string name, bool isActive, IEnumerable<TargetAudienceItem<T>> targetAudienceItems)
+            : this(name, isActive, targetAudienceItems)
+        {
+            Id = id ?? throw new ArgumentNullException(nameof(id));
         }
 
         public Notification(string name, bool isActive, IEnumerable<TargetAudienceItem<T>> targetAudienceItems)
@@ -29,12 +38,6 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
             IsActive = isActive;
             this.targetAudiences = targetAudienceItems?.ToList() 
                                    ?? throw new ArgumentNullException(nameof(targetAudienceItems));
-        }
-
-        public Notification(Id id, string name, bool isActive, IEnumerable<TargetAudienceItem<T>> targetAudienceItems)
-            : this(name, isActive, targetAudienceItems)
-        {
-            Id = id ?? throw new ArgumentNullException(nameof(id));
         }
 
         public void Activate()

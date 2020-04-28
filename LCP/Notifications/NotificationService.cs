@@ -30,12 +30,12 @@ namespace LCP.Notifications
                 if (source.IsCourseNotification)
                 {
                     var courseNotification = (CourseNotification) source;
-                    dto.TypeInfo = TextProvider.Get("Notification_CourseType_" + courseNotification.CourseType);
+                    dto.AdditionalInfo = TextProvider.Get("Notification_CourseType_" + courseNotification.CourseType);
                 }
                 else if (source.IsResourceNotification)
                 {
                     var resourceNotification = (ResourceNotification) source;
-                    dto.TypeInfo = TextProvider.Get("Notification_ResourceType_" + resourceNotification.ResourceType);
+                    dto.AdditionalInfo = string.Empty;
                 }
 
                 //TODO: resource doesn't have notifications
@@ -67,19 +67,18 @@ namespace LCP.Notifications
             var dto = new NotificationDto();
             dto.Id = source.Id;
             dto.Name = source.Name;
-            dto.Active = source.Active;
             dto.EntityType = source.EntityType;
-            dto.TargetAudience = source.TargetAudience;
 
             if (source.IsCourseNotification)
             {
                 var courseNotification = (CourseNotification) source;
                 dto.CourseType = courseNotification.CourseType;
+                dto.Active = source.Active;
+                dto.TargetAudience = source.TargetAudience;
             }
             else if (source.IsResourceNotification)
             {
-                var resourceNotification = (ResourceNotification) source;
-                dto.ResourceType = resourceNotification.ResourceType;
+                //var resourceNotification = (ResourceNotification) source;
             }
 
             var audienceTypes = new Dictionary<int, string>();
@@ -92,11 +91,6 @@ namespace LCP.Notifications
             {
                 audienceTypes.Add((int)TargetAudience.User, TextProvider.Get("Notification_TargetAudience_" + (int)TargetAudience.User));
                 audienceTypes.Add((int)TargetAudience.Manager, TextProvider.Get("Notification_TargetAudience_" + (int)TargetAudience.Manager));
-            }
-
-            if (source.IsResourceNotification && ((ResourceNotification)source).ResourceType == ResourceType.Human)
-            {
-                audienceTypes.Add((int)TargetAudience.User, TextProvider.Get("Notification_TargetAudience_Participant"));
             }
 
             dto.AvailableTargetAudiences = audienceTypes;
@@ -123,14 +117,13 @@ namespace LCP.Notifications
 
             notification.Id = dto.Id;
             notification.Name = dto.Name;
-            notification.Active = dto.Active;
             notification.EntityType = dto.EntityType;
-            notification.TargetAudience = dto.TargetAudience;
 
             if (notification.IsCourseNotification)
             {
                 var courseNotification = (CourseNotification) notification;
-
+                notification.Active = dto.Active;
+                notification.TargetAudience = dto.TargetAudience;
                 //Course type is not changeable
 
                 //Audience Manager cannot be used with Scheduling course
@@ -140,17 +133,17 @@ namespace LCP.Notifications
                 }
             }
 
-            if (notification.IsResourceNotification)
-            {
-                var resourceNotification = (ResourceNotification)notification;
-                resourceNotification.ResourceType = dto.ResourceType;
+            //if (notification.IsResourceNotification)
+            //{
+            //    var resourceNotification = (ResourceNotification)notification;
+            //    resourceNotification.ResourceType = dto.ResourceType;
 
-                // possible validation bug here
-                if (resourceNotification.ResourceType == ResourceType.Physical && (notification.TargetAudience & TargetAudience.Manager) > 0)
-                {
-                    throw new InvalidOperationException("Invalid target audience");
-                }
-            }
+            //    // possible validation bug here
+            //    if (resourceNotification.ResourceType == ResourceType.Physical && (notification.TargetAudience & TargetAudience.Manager) > 0)
+            //    {
+            //        throw new InvalidOperationException("Invalid target audience");
+            //    }
+            //}
 
             if (notification.IsEventNotification)
             {
