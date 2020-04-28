@@ -64,23 +64,13 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Course
         {
             const string textIdPrefix = "Notification_CourseType_TargetAudience_";
 
-            var selectedAudiences = targetAudiences
+            var selectedAudiences = TargetAudiences
                 .Where(a => a.IsChecked);
 
             return selectedAudiences
                 .Aggregate(
                     string.Empty, 
                     (current, audience) => current + textProvider.Get(textIdPrefix + audience.Value));
-        }
-
-        public void Activate()
-        {
-            IsActive = true;
-        }
-
-        public void Deactivate()
-        {
-            IsActive = false;
         }
     }
 }

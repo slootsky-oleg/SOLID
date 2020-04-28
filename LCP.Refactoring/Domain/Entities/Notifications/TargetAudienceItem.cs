@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications
 {
     public class TargetAudienceItem <T> : IEquatable<T> where T: struct, IConvertible
     {
-        public T Value { get; protected set; }
-        public bool IsChecked { get; protected set; }
+        public T Value { get; }
+        public bool IsChecked { get; private set; }
 
         public TargetAudienceItem(T value)
         {
@@ -17,6 +16,15 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
             : this(value)
         {
             IsChecked = isChecked;
+        }
+
+        internal void Check()
+        {
+            IsChecked = true;
+        }
+        internal void Uncheck()
+        {
+            IsChecked = false;
         }
 
         protected bool Equals(TargetAudienceItem<T> other)

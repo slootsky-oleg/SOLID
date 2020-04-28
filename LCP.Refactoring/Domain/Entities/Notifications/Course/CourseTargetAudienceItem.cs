@@ -9,14 +9,5 @@
         public CourseTargetAudienceItem(CourseTargetAudience value, bool isChecked) : base(value, isChecked)
         {
         }
-
-        internal void Check()
-        {
-            IsChecked = true;
-        }
-        internal void Uncheck()
-        {
-            IsChecked = false;
-        }
     }
 }

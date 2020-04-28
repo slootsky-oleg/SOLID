@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using LCP.Refactoring.Domain.Entities.Notifications.Course;
 using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications
 {
-    public class Notification<T> where T : struct, IConvertible, IEquatable<T>
+    public class Notification<T> where T : struct, IConvertible
     {
         public Id Id { get; }
         public string Name { get; set; }
@@ -30,6 +29,16 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
             Id = id ?? throw new ArgumentNullException(nameof(id));
         }
 
+        public void Activate()
+        {
+            IsActive = true;
+        }
+
+        public void Deactivate()
+        {
+            IsActive = false;
+        }
+
         public void CheckTargetAudience(T audience)
         {
             var item = GetTargetAudience(audience);
@@ -42,7 +51,7 @@ namespace LCP.Refactoring.Domain.Entities.Notifications
             item.Uncheck();
         }
 
-        private CourseTargetAudienceItem GetTargetAudience(T audience)
+        private TargetAudienceItem<T> GetTargetAudience(T audience)
         {
             return targetAudiences.Single(a => a.Value.Equals(audience));
         }
