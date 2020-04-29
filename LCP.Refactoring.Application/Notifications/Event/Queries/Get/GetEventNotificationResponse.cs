@@ -5,7 +5,7 @@ using LCP.Refactoring.Domain.Entities.Notifications.Event;
 using LCP.Refactoring.Domain.Services;
 using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Application.Notifications.Event.Get
+namespace LCP.Refactoring.Application.Notifications.Event.Queries.Get
 {
     public class GetEventNotificationResponse
     {

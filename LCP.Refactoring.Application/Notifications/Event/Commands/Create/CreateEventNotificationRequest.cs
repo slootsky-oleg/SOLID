@@ -1,6 +1,6 @@
 ﻿using LCP.Refactoring.Domain.Entities.Notifications.Event;
 
-namespace LCP.Refactoring.Application.Notifications.Event.Create
+namespace LCP.Refactoring.Application.Notifications.Event.Commands.Create
 {
     public class CreateEventNotificationRequest
     {

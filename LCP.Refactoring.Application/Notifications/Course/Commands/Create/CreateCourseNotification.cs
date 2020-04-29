@@ -2,7 +2,7 @@
 using LCP.Refactoring.Domain.Repositories;
 using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Application.Notifications.Course.Create
+namespace LCP.Refactoring.Application.Notifications.Course.Commands.Create
 {
     public class CreateCourseNotification
     {

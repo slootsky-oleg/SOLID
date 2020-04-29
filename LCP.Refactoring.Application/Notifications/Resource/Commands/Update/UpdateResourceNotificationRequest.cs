@@ -1,4 +1,4 @@
-﻿namespace LCP.Refactoring.Application.Notifications.Resource.Save
+﻿namespace LCP.Refactoring.Application.Notifications.Resource.Commands.Update
 {
     public class SaveResourceNotificationRequest
     {

@@ -3,17 +3,17 @@ using LCP.Refactoring.Domain.Repositories;
 using LCP.Refactoring.Domain.Services;
 using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Application.Notifications.Course.Get
+namespace LCP.Refactoring.Application.Notifications.Course.Queries.Get
 {
     public class GetCourseNotification
     {
         private readonly ICourseNotificationRepository repository;
-        private readonly ITextProvider textProvider;
+        private readonly ITargetAudienceTextBuilder targetAudienceTextBuilder;
 
-        public GetCourseNotification(ICourseNotificationRepository repository, ITextProvider textProvider)
+        public GetCourseNotification(ICourseNotificationRepository repository, ITargetAudienceTextBuilder targetAudienceTextBuilder)
         {
             this.repository = repository;
-            this.textProvider = textProvider;
+            this.targetAudienceTextBuilder = targetAudienceTextBuilder;
         }
 
         public GetCourseNotificationResponse Get(Id id)
@@ -21,7 +21,8 @@ namespace LCP.Refactoring.Application.Notifications.Course.Get
             var source = repository.Get(id) 
                          ?? throw new NotificationNotFoundException(id);
 
-            return new GetCourseNotificationResponse(textProvider, source);
+            //Use fluent builder pattern here
+            return new GetCourseNotificationResponse(targetAudienceTextBuilder, source);
         }
     }
 }

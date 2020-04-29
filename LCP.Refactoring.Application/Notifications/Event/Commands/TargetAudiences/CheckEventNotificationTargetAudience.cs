@@ -3,7 +3,7 @@ using LCP.Refactoring.Domain.Entities.Notifications.Event;
 using LCP.Refactoring.Domain.Repositories;
 using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Application.Notifications.Event.TargetAudiences
+namespace LCP.Refactoring.Application.Notifications.Event.Commands.TargetAudiences
 {
     public class CheckEventNotificationTargetAudience
     {

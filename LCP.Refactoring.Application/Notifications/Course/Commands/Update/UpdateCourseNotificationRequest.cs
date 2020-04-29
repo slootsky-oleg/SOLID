@@ -1,4 +1,4 @@
-﻿namespace LCP.Refactoring.Application.Notifications.Course.Save
+﻿namespace LCP.Refactoring.Application.Notifications.Course.Commands.Update
 {
     public class SaveCourseNotificationRequest
     {

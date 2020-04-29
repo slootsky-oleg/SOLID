@@ -1,7 +1,7 @@
 ﻿using LCP.Refactoring.Domain.Entities.Notifications.Resource;
 using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Application.Notifications.Resource.Get
+namespace LCP.Refactoring.Application.Notifications.Resource.Queries.Get
 {
     public class GetResourceNotificationResult
     {

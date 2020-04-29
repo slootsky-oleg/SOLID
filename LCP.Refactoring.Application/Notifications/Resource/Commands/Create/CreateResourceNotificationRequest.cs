@@ -1,4 +1,4 @@
-﻿namespace LCP.Refactoring.Application.Notifications.Resource.Create
+﻿namespace LCP.Refactoring.Application.Notifications.Resource.Commands.Create
 {
     public class CreateResourceNotificationRequest
     {

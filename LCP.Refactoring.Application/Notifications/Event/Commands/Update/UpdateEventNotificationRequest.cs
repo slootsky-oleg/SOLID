@@ -1,6 +1,6 @@
 ﻿using LCP.Refactoring.Domain.Entities.Notifications.Event;
 
-namespace LCP.Refactoring.Application.Notifications.Event.Save
+namespace LCP.Refactoring.Application.Notifications.Event.Commands.Update
 {
     public class SaveEventNotificationRequest
     {

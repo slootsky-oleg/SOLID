@@ -2,7 +2,7 @@
 using LCP.Refactoring.Domain.Repositories;
 using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Application.Notifications.Event.Save
+namespace LCP.Refactoring.Application.Notifications.Event.Commands.Update
 {
     public class SaveEventNotification
     {
