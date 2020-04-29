@@ -4,16 +4,16 @@ using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Application.Notifications.Course.Commands.Update
 {
-    public class SaveCourseNotification
+    public class UpdateCourseNotification
     {
         private readonly ICourseNotificationRepository repository;
 
-        public SaveCourseNotification(ICourseNotificationRepository repository)
+        public UpdateCourseNotification(ICourseNotificationRepository repository)
         {
             this.repository = repository;
         }
 
-        public void Execute(Id id, SaveCourseNotificationRequest request)
+        public void Execute(Id id, UpdateCourseNotificationRequest request)
         {
             var notification = repository.Get(id) 
                                ?? throw new NotificationNotFoundException(id);

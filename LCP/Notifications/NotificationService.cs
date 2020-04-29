@@ -38,7 +38,6 @@ namespace LCP.Notifications
                     dto.AdditionalInfo = TextProvider.Get("Notification_EventOwner_" + eventNotification.EventOwner);
                 }
 
-                //TODO: resource doesn't have notifications
                 foreach (TargetAudience value in Enum.GetValues(source.TargetAudience.GetType()))
                 {
                     if (source.TargetAudience.HasFlag(value))

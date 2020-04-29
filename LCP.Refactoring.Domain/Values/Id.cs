@@ -14,7 +14,7 @@ namespace LCP.Refactoring.Domain.Values
             this.value = value;
         }
 
-        private static Id From(long value)
+        public static Id From(long value)
         {
             return new Id(value);
         }

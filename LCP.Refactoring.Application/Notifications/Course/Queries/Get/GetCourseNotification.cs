@@ -16,7 +16,7 @@ namespace LCP.Refactoring.Application.Notifications.Course.Queries.Get
             this.targetAudienceTextBuilder = targetAudienceTextBuilder;
         }
 
-        public GetCourseNotificationResponse Get(Id id)
+        public GetCourseNotificationResponse Execute(Id id)
         {
             var source = repository.Get(id) 
                          ?? throw new NotificationNotFoundException(id);

@@ -1,6 +1,6 @@
 ﻿namespace LCP.Refactoring.Application.Notifications.Course.Commands.Update
 {
-    public class SaveCourseNotificationRequest
+    public class UpdateCourseNotificationRequest
     {
         public string Name { get; }
     }
