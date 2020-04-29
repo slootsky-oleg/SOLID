@@ -1,6 +1,4 @@
-﻿using SRP.Refactoring.SchedulingEngine;
-
-namespace SRP.Refactoring.SchedulingRequests
+﻿namespace SRP.Refactoring.SchedulingRequests
 {
 	public interface ISchedulingRequestRepository
 	{

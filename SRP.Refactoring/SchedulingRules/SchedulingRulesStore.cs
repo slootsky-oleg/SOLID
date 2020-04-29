@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using SRP.Refactoring.SchedulingRequests;
 
 namespace SRP.Refactoring.SchedulingRules

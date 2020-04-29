@@ -25,6 +25,8 @@ namespace LCP.Refactoring.API.Controllers
         [Route("{id:int}")]
         public IHttpActionResult Get(Id id)
         {
+            //use filters ExceptionHandler and ExceptionFilter to catch exceptions.
+            //DO NOT WRITE TRY CATCH IN EACH METHOD!
             var interactor = container.Resolve<GetCourseNotification>();
 
             var notification = interactor.Execute(id);
@@ -77,7 +79,7 @@ namespace LCP.Refactoring.API.Controllers
         }
 
         [HttpPut]
-        [Route("{id:int}/targetaudiences/{audience}")]
+        [Route("{id:int}/targetaudiences/{audience}/check")]
         public IHttpActionResult CheckTargetAudience(Id id, CourseTargetAudience audience)
         {
             var interactor = container.Resolve<CheckCourseNotificationTargetAudience>();
@@ -87,8 +89,8 @@ namespace LCP.Refactoring.API.Controllers
             return Ok();
         }
 
-        [HttpDelete]
-        [Route("{id:int}/targetaudiences/{audience}")]
+        [HttpPut]
+        [Route("{id:int}/targetaudiences/{audience}/uncheck")]
         public IHttpActionResult UncheckTargetAudience(Id id, CourseTargetAudience audience)
         {
             var interactor = container.Resolve<CheckCourseNotificationTargetAudience>();
