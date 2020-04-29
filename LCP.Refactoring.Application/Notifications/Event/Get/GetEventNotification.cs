@@ -3,25 +3,25 @@ using LCP.Refactoring.Domain.Repositories;
 using LCP.Refactoring.Domain.Services;
 using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Application.Notifications.Course.Get
+namespace LCP.Refactoring.Application.Notifications.Event.Get
 {
-    public class GetCourseNotification
+    public class GetEventNotification
     {
-        private readonly ICourseNotificationRepository repository;
+        private readonly IEventNotificationRepository repository;
         private readonly ITextProvider textProvider;
 
-        public GetCourseNotification(ICourseNotificationRepository repository, ITextProvider textProvider)
+        public GetEventNotification(IEventNotificationRepository repository, ITextProvider textProvider)
         {
             this.repository = repository;
             this.textProvider = textProvider;
         }
 
-        public GetCourseNotificationResponse Get(Id id)
+        public GetEventNotificationResponse Get(Id id)
         {
             var source = repository.Get(id) 
                          ?? throw new NotificationNotFoundException(id);
 
-            return new GetCourseNotificationResponse(textProvider, source);
+            return new GetEventNotificationResponse(textProvider, source);
         }
     }
 }

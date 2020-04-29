@@ -36,10 +36,4 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Event
                 EventTargetAudience.SeniorManager
             };
     }
-
-    public enum EventOwner
-    {
-        Course,
-        User
-    }
 }

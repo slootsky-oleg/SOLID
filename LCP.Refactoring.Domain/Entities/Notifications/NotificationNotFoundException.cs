@@ -1,12 +1,13 @@
 ﻿using System;
+using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications
 {
     public class NotificationNotFoundException : Exception
     {
-        public long Id { get; }
+        public Id Id { get; }
 
-        public NotificationNotFoundException(long id)
+        public NotificationNotFoundException(Id id)
             : base($"Notification with Id [{id}] not found.")
         {
             Id = id;

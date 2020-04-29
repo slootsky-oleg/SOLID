@@ -1,6 +1,6 @@
 ﻿using LCP.Refactoring.Domain.Entities.Notifications;
-using LCP.Refactoring.Domain.Entities.Notifications.Course;
 using LCP.Refactoring.Domain.Repositories;
+using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Application.Notifications.Course.Deactivate
 {
@@ -15,7 +15,7 @@ namespace LCP.Refactoring.Application.Notifications.Course.Deactivate
             this.repository = repository;
         }
 
-        public void Execute(long id)
+        public void Execute(Id id)
         {
             var notification = repository.Get(id) 
                                ?? throw new NotificationNotFoundException(id);

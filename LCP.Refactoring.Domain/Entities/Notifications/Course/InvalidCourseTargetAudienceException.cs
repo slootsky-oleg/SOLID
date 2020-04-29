@@ -2,12 +2,12 @@
 
 namespace LCP.Refactoring.Domain.Entities.Notifications.Course
 {
-    public class InvalidCourseTargetAudience : Exception
+    public class InvalidCourseTargetAudienceException : Exception
     {
         public CourseType CourseType { get; }
         public CourseTargetAudience Audience { get; }
 
-        public InvalidCourseTargetAudience(CourseType courseType, CourseTargetAudience audience)
+        public InvalidCourseTargetAudienceException(CourseType courseType, CourseTargetAudience audience)
             : base($"Audience [{audience}] incompatible with with [{courseType}] course.")
         {
             CourseType = courseType;

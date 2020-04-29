@@ -32,10 +32,10 @@ namespace LCP.Notifications
                     var courseNotification = (CourseNotification) source;
                     dto.AdditionalInfo = TextProvider.Get("Notification_CourseType_" + courseNotification.CourseType);
                 }
-                else if (source.IsResourceNotification)
+                else if (source.IsEventNotification)
                 {
-                    var resourceNotification = (ResourceNotification) source;
-                    dto.AdditionalInfo = string.Empty;
+                    var eventNotification = (EventNotification) source;
+                    dto.AdditionalInfo = TextProvider.Get("Notification_EventOwner_" + eventNotification.EventOwner);
                 }
 
                 //TODO: resource doesn't have notifications
@@ -93,6 +93,14 @@ namespace LCP.Notifications
                 audienceTypes.Add((int)TargetAudience.Manager, TextProvider.Get("Notification_TargetAudience_" + (int)TargetAudience.Manager));
             }
 
+            if (source.IsEventNotification)
+            {
+                audienceTypes.Add((int)TargetAudience.User, TextProvider.Get("Notification_TargetAudience_Participant"));
+                audienceTypes.Add((int)TargetAudience.Manager, TextProvider.Get("Notification_TargetAudience_" + (int)TargetAudience.Manager));
+                audienceTypes.Add((int)TargetAudience.SeniorManager, TextProvider.Get("Notification_TargetAudience_" + (int)TargetAudience.SeniorManager));
+
+            }
+
             dto.AvailableTargetAudiences = audienceTypes;
 
             return dto;
@@ -117,37 +125,38 @@ namespace LCP.Notifications
 
             notification.Id = dto.Id;
             notification.Name = dto.Name;
-            notification.EntityType = dto.EntityType;
+
+            if (dto.Id < 1)
+            {
+                notification.EntityType = dto.EntityType;
+            }
 
             if (notification.IsCourseNotification)
             {
-                var courseNotification = (CourseNotification) notification;
                 notification.Active = dto.Active;
                 notification.TargetAudience = dto.TargetAudience;
                 //Course type is not changeable
 
                 //Audience Manager cannot be used with Scheduling course
+                var courseNotification = (CourseNotification) notification;
                 if (courseNotification.CourseType == CourseType.Corporate && (notification.TargetAudience & TargetAudience.Manager) > 0)
                 {
                     throw new InvalidOperationException("Invalid target audience");
                 }
             }
 
-            //if (notification.IsResourceNotification)
-            //{
-            //    var resourceNotification = (ResourceNotification)notification;
-            //    resourceNotification.ResourceType = dto.ResourceType;
-
-            //    // possible validation bug here
-            //    if (resourceNotification.ResourceType == ResourceType.Physical && (notification.TargetAudience & TargetAudience.Manager) > 0)
-            //    {
-            //        throw new InvalidOperationException("Invalid target audience");
-            //    }
-            //}
-
             if (notification.IsEventNotification)
             {
-                //will be implemented in next versions
+                notification.Active = dto.Active;
+                notification.TargetAudience = dto.TargetAudience;
+
+                var eventNotification = (EventNotification) notification;
+                eventNotification.EventOwner = dto.EventOwner;
+            }
+
+            if (notification.IsUserNotification)
+            {
+                //will be implemented in next releases
             }
 
             //possible security break here.

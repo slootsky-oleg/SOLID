@@ -45,11 +45,14 @@
     <Compile Include="Entities\Notifications\Course\CourseNotification.cs" />
     <Compile Include="Entities\Notifications\Course\CourseTargetAudience.cs" />
     <Compile Include="Entities\Notifications\Course\CourseTargetAudienceItem.cs" />
+    <Compile Include="Entities\Notifications\Event\EventOwner.cs" />
     <Compile Include="Entities\Notifications\Event\EventTargetAudience.cs" />
     <Compile Include="Entities\Notifications\Event\EventTargetAudienceItem.cs" />
     <Compile Include="Entities\Notifications\Event\EventNotification.cs" />
+    <Compile Include="Repositories\IResourceNotificationRepository.cs" />
+    <Compile Include="Repositories\IEventNotificationRepository.cs" />
     <Compile Include="Repositories\ICourseNotificationRepository.cs" />
-    <Compile Include="Entities\Notifications\Course\InvalidCourseTargetAudience.cs" />
+    <Compile Include="Entities\Notifications\Course\InvalidCourseTargetAudienceException.cs" />
     <Compile Include="Entities\Notifications\Notification.cs" />
     <Compile Include="Entities\Notifications\NotificationNotFoundException.cs" />
     <Compile Include="Entities\Notifications\Resource\ResourceNotification.cs" />

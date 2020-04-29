@@ -1,8 +1,7 @@
 ﻿namespace LCP.Refactoring.Application.Notifications.Course.Save
 {
-    public class SaveCourseNotificationDto
+    public class SaveCourseNotificationRequest
     {
-        public long Id { get; }
         public string Name { get; }
     }
 }

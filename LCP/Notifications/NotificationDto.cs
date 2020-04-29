@@ -14,5 +14,6 @@ namespace LCP.Notifications
         public string AdditionalInfo { get; set; }
         public CourseType CourseType { get; set; }
         public Dictionary<int, string> AvailableTargetAudiences { get; set; }
+        public EventOwner EventOwner { get; set; }
     }
 }

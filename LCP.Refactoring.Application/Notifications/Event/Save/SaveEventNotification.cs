@@ -2,23 +2,24 @@
 using LCP.Refactoring.Domain.Repositories;
 using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Application.Notifications.Course.Save
+namespace LCP.Refactoring.Application.Notifications.Event.Save
 {
-    public class SaveCourseNotification
+    public class SaveEventNotification
     {
-        private readonly ICourseNotificationRepository repository;
+        private readonly IEventNotificationRepository repository;
 
-        public SaveCourseNotification(ICourseNotificationRepository repository)
+        public SaveEventNotification(IEventNotificationRepository repository)
         {
             this.repository = repository;
         }
 
-        public void Execute(Id id, SaveCourseNotificationRequest request)
+        public void Execute(Id id, SaveEventNotificationRequest request)
         {
             var notification = repository.Get(id) 
                                ?? throw new NotificationNotFoundException(id);
 
             notification.Name = request.Name;
+            notification.EventOwner = request.EventOwner;
         }
     }
 }

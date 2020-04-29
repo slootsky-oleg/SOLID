@@ -13,9 +13,9 @@ namespace LCP.Refactoring.Application.Notifications.Course.Create
             this.repository = repository;
         }
 
-        public Id Execute(CreateCourseNotificationDto dto)
+        public Id Execute(CreateCourseNotificationRequest request)
         {
-            var notification = new CourseNotification(dto.Name, dto.IsActive, dto.CourseType);
+            var notification = new CourseNotification(request.Name, request.IsActive, request.CourseType);
 
             repository.Save(notification);
 

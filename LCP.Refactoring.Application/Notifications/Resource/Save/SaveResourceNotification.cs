@@ -2,18 +2,18 @@
 using LCP.Refactoring.Domain.Repositories;
 using LCP.Refactoring.Domain.Values;
 
-namespace LCP.Refactoring.Application.Notifications.Course.Save
+namespace LCP.Refactoring.Application.Notifications.Resource.Save
 {
-    public class SaveCourseNotification
+    public class SaveResourceNotification
     {
-        private readonly ICourseNotificationRepository repository;
+        private readonly IResourceNotificationRepository repository;
 
-        public SaveCourseNotification(ICourseNotificationRepository repository)
+        public SaveResourceNotification(IResourceNotificationRepository repository)
         {
             this.repository = repository;
         }
 
-        public void Execute(Id id, SaveCourseNotificationRequest request)
+        public void Execute(Id id, SaveResourceNotificationRequest request)
         {
             var notification = repository.Get(id) 
                                ?? throw new NotificationNotFoundException(id);

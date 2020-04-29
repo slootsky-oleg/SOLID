@@ -42,14 +42,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Notifications\Course\Activate\ActivateCourseNotification.cs" />
-    <Compile Include="Notifications\Course\CourseTargetAudienceTextBuilder.cs" />
+    <Compile Include="Notifications\Course\Get\TargetAudienceTextBuilder.cs" />
     <Compile Include="Notifications\Course\Create\CreateCourseNotification.cs" />
-    <Compile Include="Notifications\Course\Create\CreateCourseNotificationDto.cs" />
-    <Compile Include="Notifications\Course\Deactivate\DeactivateCourseNotification.cs" />
+    <Compile Include="Notifications\Course\Create\CreateCourseNotificationRequest.cs" />
     <Compile Include="Notifications\Course\Get\GetCourseNotification.cs" />
-    <Compile Include="Notifications\Course\Get\GetCourseNotificationDto.cs" />
+    <Compile Include="Notifications\Course\Get\GetCourseNotificationResponse.cs" />
     <Compile Include="Notifications\Course\Save\SaveCourseNotification.cs" />
-    <Compile Include="Notifications\Course\Save\SaveCourseNotificationDto.cs" />
+    <Compile Include="Notifications\Course\Save\SaveCourseNotificationRequest.cs" />
+    <Compile Include="Notifications\Event\Activate\ActivateEventNotification.cs" />
+    <Compile Include="Notifications\Event\Create\CreateEventNotification.cs" />
+    <Compile Include="Notifications\Event\Create\CreateEventNotificationRequest.cs" />
+    <Compile Include="Notifications\Event\Deactivate\DeactivateEventNotification.cs" />
+    <Compile Include="Notifications\Event\Get\GetEventNotification.cs" />
+    <Compile Include="Notifications\Event\Get\GetEventNotificationResponse.cs" />
+    <Compile Include="Notifications\Event\Save\SaveEventNotification.cs" />
+    <Compile Include="Notifications\Event\Save\SaveEventNotificationRequest.cs" />
+    <Compile Include="Notifications\Event\TargetAudiences\CheckEventNotificationTargetAudience.cs" />
+    <Compile Include="Notifications\Event\TargetAudiences\UncheckEventNotificationTargetAudience.cs" />
+    <Compile Include="Notifications\Resource\Create\CreateResourceNotification.cs" />
+    <Compile Include="Notifications\Resource\Create\CreateResourceNotificationRequest.cs" />
+    <Compile Include="Notifications\Course\Deactivate\DeactivateCourseNotification.cs" />
+    <Compile Include="Notifications\Resource\Get\GetResourceNotification.cs" />
+    <Compile Include="Notifications\Resource\Get\GetResourceNotificationResult.cs" />
+    <Compile Include="Notifications\Resource\Save\SaveResourceNotification.cs" />
+    <Compile Include="Notifications\Resource\Save\SaveResourceNotificationRequest.cs" />
     <Compile Include="Notifications\Course\TargetAudiences\CheckCourseNotificationTargetAudience.cs" />
     <Compile Include="Notifications\Course\TargetAudiences\UncheckCourseNotificationTargetAudience.cs" />
     <Compile Include="Notifications\GenericSearch\NotificationSearchResultDto.cs" />
@@ -67,5 +83,6 @@
       <Name>LCP.Refactoring.ReadModel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

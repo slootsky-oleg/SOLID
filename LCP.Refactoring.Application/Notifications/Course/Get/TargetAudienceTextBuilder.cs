@@ -2,14 +2,16 @@
 using LCP.Refactoring.Domain.Entities.Notifications.Course;
 using LCP.Refactoring.Domain.Services;
 
-namespace LCP.Refactoring.Application.Notifications.Course
+namespace LCP.Refactoring.Application.Notifications.Course.Get
 {
-    public class CourseTargetAudienceTextBuilder
+    public class TargetAudienceTextBuilder
     {
         private readonly ITextProvider textProvider;
         private readonly CourseNotification notification;
 
-        public CourseTargetAudienceTextBuilder(ITextProvider textProvider, CourseNotification notification)
+        //TODO: use in readmodel
+
+        public TargetAudienceTextBuilder(ITextProvider textProvider, CourseNotification notification)
         {
             this.textProvider = textProvider;
             this.notification = notification;

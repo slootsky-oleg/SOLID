@@ -7,19 +7,19 @@ using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Application.Notifications.Course.Get
 {
-    public class GetCourseNotificationDto
+    public class GetCourseNotificationResponse
     {
-        private readonly CourseTargetAudienceTextBuilder audienceTextBuilder;
+        private readonly TargetAudienceTextBuilder audienceTextBuilder;
 
         public Id Id { get; }
         public string Name { get; }
         public bool Active { get; }
         public CourseType CourseType { get; }
-        public IList<TargetAudienceDto<CourseTargetAudience>> TargetAudiences;
+        public IList<TargetAudienceDto<CourseTargetAudience>> TargetAudiences { get; set; }
 
-        public GetCourseNotificationDto(ITextProvider textProvider, CourseNotification source)
+        public GetCourseNotificationResponse(ITextProvider textProvider, CourseNotification source)
         {
-            this.audienceTextBuilder = new CourseTargetAudienceTextBuilder(textProvider, source);
+            this.audienceTextBuilder = new TargetAudienceTextBuilder(textProvider, source);
 
             Id = source.Id;
             Name = source.Name;

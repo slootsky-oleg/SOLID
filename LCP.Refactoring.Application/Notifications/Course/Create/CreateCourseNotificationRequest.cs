@@ -2,7 +2,7 @@
 
 namespace LCP.Refactoring.Application.Notifications.Course.Create
 {
-    public class CreateCourseNotificationDto
+    public class CreateCourseNotificationRequest
     {
         public string Name { get; }
         public CourseType CourseType { get; set; }

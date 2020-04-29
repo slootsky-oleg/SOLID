@@ -12,6 +12,7 @@ namespace LCP.Notifications
 
         public bool IsResourceNotification => EntityType == EntityType.Resource;
         public bool IsCourseNotification => EntityType == EntityType.Course;
-        public bool IsEventNotification => throw new NotImplementedException("Event notification will be implemented in the future");
+        public bool IsEventNotification => EntityType == EntityType.Event;
+        public bool IsUserNotification => throw new NotImplementedException("User notification will be implemented in the future");
     }
 }

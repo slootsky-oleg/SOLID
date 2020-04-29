@@ -1,5 +1,4 @@
-﻿using LCP.Refactoring.Domain.Entities.Notifications;
-using LCP.Refactoring.Domain.Values;
+﻿using LCP.Refactoring.Domain.Values;
 using LCP.Refactoring.ReadModel.Notifications;
 
 namespace LCP.Refactoring.Application.Notifications.GenericSearch
