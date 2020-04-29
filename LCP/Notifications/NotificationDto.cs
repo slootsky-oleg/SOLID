@@ -2,7 +2,6 @@
 
 namespace LCP.Notifications
 {
-    //TODO: inherit specific dto for each notification. Their goal - create Additional info and target audience descriptions
     public class NotificationDto
     {
         public long Id { get; set; }

@@ -8,7 +8,6 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Event
     {
         private static readonly IList<EventTargetAudience> Audiences = GetAudiences();
 
-        //TODO: update service to update owner
         public EventOwner EventOwner { get; set; }
 
         public EventNotification(string name, bool isActive, EventOwner eventOwner) 

@@ -42,8 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Notifications\Course\Commands\Activate\ActivateCourseNotification.cs" />
-    <Compile Include="Notifications\ITargetAudienceTextBuilder.cs" />
-    <Compile Include="Notifications\Course\Queries\Get\CourseTargetAudienceTextBuilder.cs" />
+    <Compile Include="Notifications\Course\CourseTargetAudienceTextBuilder.cs" />
     <Compile Include="Notifications\Course\Commands\Create\CreateCourseNotification.cs" />
     <Compile Include="Notifications\Course\Commands\Create\CreateCourseNotificationRequest.cs" />
     <Compile Include="Notifications\Course\Queries\Get\GetCourseNotification.cs" />

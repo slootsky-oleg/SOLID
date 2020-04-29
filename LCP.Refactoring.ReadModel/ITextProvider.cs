@@ -1,4 +1,4 @@
-﻿namespace LCP.Refactoring.Domain.Services
+﻿namespace LCP.Refactoring.ReadModel
 {
     public interface ITextProvider
     {

@@ -58,9 +58,10 @@
     <Compile Include="Entities\Notifications\Resource\ResourceNotification.cs" />
     <Compile Include="Entities\Notifications\TargetAudienceItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ITextProvider.cs" />
     <Compile Include="Values\Id.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

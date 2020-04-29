@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ITextProvider.cs" />
     <Compile Include="Notifications\Course\CourseNotificationSearchResult.cs" />
+    <Compile Include="Notifications\Course\ICourseTargetAudienceTextBuilder.cs" />
     <Compile Include="Notifications\EntityType.cs" />
     <Compile Include="Notifications\Event\EventNotificationSearchResult.cs" />
     <Compile Include="Notifications\INotificationReadModelStore.cs" />

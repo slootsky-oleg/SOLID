@@ -2,8 +2,8 @@
 using System.Linq;
 using LCP.Refactoring.Domain.Entities.Notifications;
 using LCP.Refactoring.Domain.Entities.Notifications.Event;
-using LCP.Refactoring.Domain.Services;
 using LCP.Refactoring.Domain.Values;
+using LCP.Refactoring.ReadModel;
 
 namespace LCP.Refactoring.Application.Notifications.Event.Queries.Get
 {

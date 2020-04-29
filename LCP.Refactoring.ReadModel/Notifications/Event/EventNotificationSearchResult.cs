@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using LCP.Refactoring.Domain.Entities.Notifications.Event;
-using LCP.Refactoring.Domain.Services;
 using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.ReadModel.Notifications.Event

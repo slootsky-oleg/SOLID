@@ -1,5 +1,4 @@
-﻿using LCP.Refactoring.Domain.Services;
-using LCP.Refactoring.Domain.Values;
+﻿using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.Domain.Entities.Notifications.Resource
 {

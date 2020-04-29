@@ -2,7 +2,6 @@
 using System.Linq;
 using LCP.Refactoring.Domain.Entities.Notifications;
 using LCP.Refactoring.Domain.Entities.Notifications.Course;
-using LCP.Refactoring.Domain.Services;
 using LCP.Refactoring.Domain.Values;
 
 namespace LCP.Refactoring.ReadModel.Notifications.Course
@@ -13,12 +12,8 @@ namespace LCP.Refactoring.ReadModel.Notifications.Course
         private const string TextIdPrefix = "Notification_Course_TargetAudience_";
         private const string TextParticipant = "Notification_Course_TargetAudience_Participant";
 
+        private readonly ICourseTargetAudienceTextBuilder audienceTextBuilder;
         private readonly ITextProvider textProvider;
-
-        public CourseNotificationSearchResult(ITextProvider textProvider)
-        {
-            this.textProvider = textProvider;
-        }
 
         public Id Id { get; set; }
         public string Name { get; set; }
@@ -28,6 +23,14 @@ namespace LCP.Refactoring.ReadModel.Notifications.Course
         public string TargetAudienceText => GetTargetAudiencesInfo();
         public CourseType CourseType { get; set; }
         public IList<TargetAudienceItemReadModel<CourseTargetAudience>> TargetAudiences { get; set; }
+
+        public CourseNotificationSearchResult(
+            ICourseTargetAudienceTextBuilder audienceTextBuilder,
+            ITextProvider textProvider)
+        {
+            this.audienceTextBuilder = audienceTextBuilder;
+            this.textProvider = textProvider;
+        }
 
         private string GetAdditionalInfo()
         {
@@ -42,17 +45,7 @@ namespace LCP.Refactoring.ReadModel.Notifications.Course
             return selectedItems
                 .Aggregate(
                     string.Empty,
-                    (current, audience) => current + GetAudienceText(audience.Value));
-        }
-
-        private string GetAudienceText(CourseTargetAudience audience)
-        {
-            if (CourseType == CourseType.Corporate && audience == CourseTargetAudience.User)
-            {
-                return textProvider.Get(TextParticipant);
-            }
-
-            return textProvider.Get(TextIdPrefix + audience);
+                    (current, audience) => current + audienceTextBuilder.Build(audience.Value));
         }
     }
 }

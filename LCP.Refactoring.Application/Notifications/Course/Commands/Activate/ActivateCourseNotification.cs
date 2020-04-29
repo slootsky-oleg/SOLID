@@ -17,7 +17,7 @@ namespace LCP.Refactoring.Application.Notifications.Course.Commands.Activate
 
         public void Execute(Id id)
         {
-            //TODO: create NotificationLookup class;
+            //Extract to NotificationLookup class;
             var notification = repository.Get(id) 
                                ?? throw new NotificationNotFoundException(id);
 

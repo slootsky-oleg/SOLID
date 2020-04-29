@@ -2,14 +2,14 @@
 using System.Linq;
 using LCP.Refactoring.Domain.Entities.Notifications;
 using LCP.Refactoring.Domain.Entities.Notifications.Course;
-using LCP.Refactoring.Domain.Services;
 using LCP.Refactoring.Domain.Values;
+using LCP.Refactoring.ReadModel.Notifications.Course;
 
 namespace LCP.Refactoring.Application.Notifications.Course.Queries.Get
 {
     public class GetCourseNotificationResponse
     {
-        private readonly ITargetAudienceTextBuilder audienceTextBuilder;
+        private readonly ICourseTargetAudienceTextBuilder audienceTextBuilder;
 
         public Id Id { get; }
         public string Name { get; }
@@ -17,7 +17,7 @@ namespace LCP.Refactoring.Application.Notifications.Course.Queries.Get
         public CourseType CourseType { get; }
         public IList<TargetAudienceDto<CourseTargetAudience>> TargetAudiences { get; set; }
 
-        public GetCourseNotificationResponse(ITargetAudienceTextBuilder<CourseTargetAudience> audienceTextBuilder, CourseNotification source)
+        public GetCourseNotificationResponse(ICourseTargetAudienceTextBuilder audienceTextBuilder, CourseNotification source)
         {
             this.audienceTextBuilder = audienceTextBuilder;
 
