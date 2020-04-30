@@ -24,7 +24,8 @@ namespace LCP.Refactoring.Domain.Entities.Notifications.Course
             CourseType = courseType;
         }
 
-        //Consider storing only selected items
+        //Consider storing only selected items.
+        //Reason: Adding new CourseTargetAudience will lead to db update
         private static IEnumerable<CourseTargetAudienceItem> BuildTargetAudiences(CourseType courseType)
         {
             var courseAudiences = AudiencesByType[courseType];
