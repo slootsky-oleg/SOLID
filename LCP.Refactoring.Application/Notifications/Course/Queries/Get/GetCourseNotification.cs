@@ -21,7 +21,9 @@ namespace LCP.Refactoring.Application.Notifications.Course.Queries.Get
             var source = repository.Get(id) 
                          ?? throw new NotificationNotFoundException(id);
 
-            //Use fluent builder pattern here
+            //1.Use fluent builder pattern here
+            //  new GetCourseNotificationResponseBuilder(targetAudienceTextBuilder).Build()
+            //2. Use read model store to produce response ignoring Notification entity
             return new GetCourseNotificationResponse(targetAudienceTextBuilder, source);
         }
     }

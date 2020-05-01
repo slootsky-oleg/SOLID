@@ -13,12 +13,10 @@ namespace LCP.Refactoring.Application.Notifications.GenericSearch
             this.store = store;
         }
 
-        public IList<NotificationSearchResultDto> Execute()
+        public IList<INotificationSearchResult> Execute()
         {
-            var notifications = store.Search();
-
-            return notifications
-                .Select(n => new NotificationSearchResultDto(n))
+            return store
+                .Search()
                 .ToList();
         }
     }

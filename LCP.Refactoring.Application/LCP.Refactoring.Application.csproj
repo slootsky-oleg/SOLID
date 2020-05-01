@@ -68,7 +68,6 @@
     <Compile Include="Notifications\Resource\Commands\Update\UpdateResourceNotificationRequest.cs" />
     <Compile Include="Notifications\Course\Commands\TargetAudiences\CheckCourseNotificationTargetAudience.cs" />
     <Compile Include="Notifications\Course\Commands\TargetAudiences\UncheckCourseNotificationTargetAudience.cs" />
-    <Compile Include="Notifications\GenericSearch\NotificationSearchResultDto.cs" />
     <Compile Include="Notifications\GenericSearch\SearchForNotifications.cs" />
     <Compile Include="Notifications\TargetAudienceDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
