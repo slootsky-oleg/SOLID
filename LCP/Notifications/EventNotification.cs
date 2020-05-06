@@ -2,6 +2,11 @@
 {
     public class EventNotification : Notification
     {
+        public EventNotification()
+        {
+            EntityType = EntityType.Event;
+        }
+
         public EventOwner EventOwner { get; set; }
     }
 
