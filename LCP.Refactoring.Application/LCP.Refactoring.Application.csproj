@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5512CC4-FEFE-478C-82CB-61485F96D732}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LCP.Refactoring.Application</RootNamespace>
+    <AssemblyName>LCP.Refactoring.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Notifications\Course\Commands\Activate\ActivateCourseNotification.cs" />
+    <Compile Include="Notifications\Course\CourseTargetAudienceTextBuilder.cs" />
+    <Compile Include="Notifications\Course\Commands\Create\CreateCourseNotification.cs" />
+    <Compile Include="Notifications\Course\Commands\Create\CreateCourseNotificationRequest.cs" />
+    <Compile Include="Notifications\Course\Queries\Get\GetCourseNotification.cs" />
+    <Compile Include="Notifications\Course\Queries\Get\GetCourseNotificationResponse.cs" />
+    <Compile Include="Notifications\Course\Commands\Update\UpdateCourseNotification.cs" />
+    <Compile Include="Notifications\Course\Commands\Update\UpdateCourseNotificationRequest.cs" />
+    <Compile Include="Notifications\Event\Commands\Activate\ActivateEventNotification.cs" />
+    <Compile Include="Notifications\Event\Commands\Create\CreateEventNotification.cs" />
+    <Compile Include="Notifications\Event\Commands\Create\CreateEventNotificationRequest.cs" />
+    <Compile Include="Notifications\Event\Commands\Deactivate\DeactivateEventNotification.cs" />
+    <Compile Include="Notifications\Event\Queries\Get\GetEventNotification.cs" />
+    <Compile Include="Notifications\Event\Queries\Get\GetEventNotificationResponse.cs" />
+    <Compile Include="Notifications\Event\Commands\Update\UpdateEventNotification.cs" />
+    <Compile Include="Notifications\Event\Commands\Update\UpdateEventNotificationRequest.cs" />
+    <Compile Include="Notifications\Event\Commands\TargetAudiences\CheckEventNotificationTargetAudience.cs" />
+    <Compile Include="Notifications\Event\Commands\TargetAudiences\UncheckEventNotificationTargetAudience.cs" />
+    <Compile Include="Notifications\Resource\Commands\Create\CreateResourceNotification.cs" />
+    <Compile Include="Notifications\Resource\Commands\Create\CreateResourceNotificationRequest.cs" />
+    <Compile Include="Notifications\Course\Commands\Deactivate\DeactivateCourseNotification.cs" />
+    <Compile Include="Notifications\Resource\Queries\Get\GetResourceNotification.cs" />
+    <Compile Include="Notifications\Resource\Queries\Get\GetResourceNotificationResult.cs" />
+    <Compile Include="Notifications\Resource\Commands\Update\UpdateResourceNotification.cs" />
+    <Compile Include="Notifications\Resource\Commands\Update\UpdateResourceNotificationRequest.cs" />
+    <Compile Include="Notifications\Course\Commands\TargetAudiences\CheckCourseNotificationTargetAudience.cs" />
+    <Compile Include="Notifications\Course\Commands\TargetAudiences\UncheckCourseNotificationTargetAudience.cs" />
+    <Compile Include="Notifications\GenericSearch\SearchForNotifications.cs" />
+    <Compile Include="Notifications\TargetAudienceDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LCP.Refactoring.Domain\LCP.Refactoring.Domain.csproj">
+      <Project>{66c81575-3026-4867-8124-5d4d63cbf35d}</Project>
+      <Name>LCP.Refactoring.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LCP.Refactoring.ReadModel\LCP.Refactoring.ReadModel.csproj">
+      <Project>{c4dab955-3198-4d56-a97f-6f152640e4eb}</Project>
+      <Name>LCP.Refactoring.ReadModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
