@@ -2,6 +2,11 @@
 {
     public class CourseNotification : Notification
     {
+        public CourseNotification()
+        {
+            EntityType = EntityType.Course;
+        }
+
         public CourseType CourseType { get; set; }
     }
 
